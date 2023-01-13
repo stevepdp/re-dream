@@ -7,7 +7,11 @@ public class Exit : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        if (PlayerHasPuzzlePiece())
+            GameManager.instance.GameReset(); 
+        else
+            Debug.Log("You're missing this room's puzzle piece");
     }
+
+    private bool PlayerHasPuzzlePiece() => GameManager.instance.PlayerPuzzlePieces == 1 ? true : false;
 }

@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeadZone : MonoBehaviour
+public class PuzzlePiece : Item
 {
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            GameManager.instance.GameReset();
+            SetPuzzlePieceCollected();
+            Destroy(gameObject);
         }
     }
+
+    void SetPuzzlePieceCollected() => GameManager.instance.PlayerPuzzlePieces = 1;
 }
