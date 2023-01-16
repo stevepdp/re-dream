@@ -13,4 +13,5 @@ For the imported prefabs to work correctly, please make sure to license the abov
 Additionally, the project was built using:
 
 * ProBuilder - installed via Unity Registry  
-* ProGrids - installed via Git `com.unity.progrids`
+* ProGrids - installed via Git `com.unity.progrids`  
+* TextMesh Pro (TMP Essentials) with the path `Assets/_Imports/TextMesh Pro`
