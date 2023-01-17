@@ -4,6 +4,18 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/_Scenes/01_Room_Cave.unity
+    guid: 75b201d8f6812c149976c3369139d2b3
+  - enabled: 1
+    path: Assets/_Scenes/02_Room_Town.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/_Scenes/03_Room_SkyHigh.unity
+    guid: cc7579354bc26ec4bb077ffe58d1fbc2
+  - enabled: 1
+    path: Assets/_Scenes/03_Room_UpAndUp.unity
+    guid: b26a12fa87ba22f40a7e763c5d75340c
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7, type: 2}
