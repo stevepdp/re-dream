@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/_Scenes/02_Room_Town.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/_Scenes/03_Room_SkyHigh.unity
+    path: Assets/_Scenes/04_Room_SkyHigh.unity
     guid: cc7579354bc26ec4bb077ffe58d1fbc2
   - enabled: 1
     path: Assets/_Scenes/03_Room_UpAndUp.unity
