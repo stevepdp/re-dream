@@ -8,7 +8,7 @@ public class DeadZone : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            GameManager.instance.GameReset();
+            GameManager.instance.LevelReset();
         }
     }
 }

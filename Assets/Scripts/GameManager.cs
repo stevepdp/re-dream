@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         EnforceSingleInstance();
-        GameSetup();
+        LevelSetup();
     }
 
     void EnforceSingleInstance()
@@ -32,13 +32,17 @@ public class GameManager : MonoBehaviour
     }
 
    
-    public void GameReset()
+    public void LevelReset()
     {
-        playerPuzzlePieces = 0;
-        GameRestart();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        LevelSetup();
     }
 
-    public void GameRestart() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    public void NextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        LevelSetup();
+    }
 
-    void GameSetup() => playerPuzzlePieces = 0;
+    void LevelSetup() => playerPuzzlePieces = 0;
 }

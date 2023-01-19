@@ -14,7 +14,7 @@ public class Exit : MonoBehaviour
         if (PlayerHasPuzzlePiece())
         {
             roomRequirementsText.text = "Dream Solved!";
-            Invoke("GameReset", exitWaitTime);
+            Invoke("LoadNextLevel", exitWaitTime);
         }
         else
         {
@@ -30,7 +30,7 @@ public class Exit : MonoBehaviour
             roomRequirementsText.text = "Exit";
     }
 
-    private void GameReset() => GameManager.instance.GameReset();
+    private void LoadNextLevel() => GameManager.instance.NextLevel();
 
     private bool PlayerHasPuzzlePiece() => GameManager.instance.PlayerPuzzlePieces == 1 ? true : false;
 
