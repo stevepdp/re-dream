@@ -1621,6 +1621,7 @@ GameObject:
   - component: {fileID: 103835186775086945}
   - component: {fileID: 103835186775086950}
   - component: {fileID: 103835186775086951}
+  - component: {fileID: 7578943270488594050}
   m_Layer: 0
   m_Name: RoomRequirementsText
   m_TagString: Untagged
@@ -1782,6 +1783,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 103835186775086950}
   m_maskType: 0
+--- !u!114 &7578943270488594050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103835186775086948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae179e95c5ff6f54786caf2256181377, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &103835186845361406
 GameObject:
   m_ObjectHideFlags: 0

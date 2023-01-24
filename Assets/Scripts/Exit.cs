@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -6,33 +7,16 @@ using UnityEngine.SceneManagement;
 
 public class Exit : MonoBehaviour
 {
-    [SerializeField] TMP_Text roomRequirementsText;
-    [SerializeField] private float exitWaitTime;
+    public static event Action OnPlayerEnteredExit;
+    public static event Action OnPlayerLeftExit;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (PlayerHasPuzzlePiece())
-        {
-            roomRequirementsText.text = "Dream Solved!";
-            Invoke("LoadNextLevel", exitWaitTime);
-        }
-        else
-        {
-            roomRequirementsText.text = "Puzzle Pieces: [0/1]";
-        }
+        OnPlayerEnteredExit?.Invoke();
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (PlayerHasPuzzlePiece())
-            roomRequirementsText.text = "Nice!";
-        else
-            roomRequirementsText.text = "Exit";
+        OnPlayerLeftExit?.Invoke();
     }
-
-    private void LoadNextLevel() => GameManager.instance.NextLevel();
-
-    private bool PlayerHasPuzzlePiece() => GameManager.instance.PlayerPuzzlePieces == 1 ? true : false;
-
-    
 }

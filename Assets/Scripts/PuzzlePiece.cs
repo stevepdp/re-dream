@@ -1,17 +1,18 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PuzzlePiece : Item
 {
+    public static event Action OnPuzzlePieceCollected;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            SetPuzzlePieceCollected();
+            OnPuzzlePieceCollected?.Invoke();
             Destroy(gameObject);
         }
     }
-
-    void SetPuzzlePieceCollected() => GameManager.instance.PlayerPuzzlePieces = 1;
 }

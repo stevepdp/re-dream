@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
 
+    public static event Action OnRoomRequirementsMet;
+    public static event Action OnRoomRequirementsNotMet;
+    
+    private float exitWaitTime = 1.5f;
     [SerializeField] private int playerPuzzlePieces = 0;
 
     public int PlayerPuzzlePieces
@@ -21,6 +26,18 @@ public class GameManager : MonoBehaviour
         LevelSetup();
     }
 
+    void OnEnable()
+    {
+        Exit.OnPlayerEnteredExit += TestRoomRequirementsMet;
+        PuzzlePiece.OnPuzzlePieceCollected += IncrementPuzzlePiece;
+    }
+
+    void OnDisable()
+    {
+        Exit.OnPlayerEnteredExit -= TestRoomRequirementsMet;
+        PuzzlePiece.OnPuzzlePieceCollected -= IncrementPuzzlePiece;
+    }
+
     void EnforceSingleInstance()
     {
         if (instance == null)
@@ -31,18 +48,32 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-   
+    void IncrementPuzzlePiece() => playerPuzzlePieces += 1;
+
     public void LevelReset()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         LevelSetup();
     }
 
-    public void NextLevel()
+    void LevelSetup() => playerPuzzlePieces = 0;
+
+    void NextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         LevelSetup();
     }
 
-    void LevelSetup() => playerPuzzlePieces = 0;
+    void TestRoomRequirementsMet()
+    {
+        if (playerPuzzlePieces == 1)
+        {
+            OnRoomRequirementsMet?.Invoke();
+            Invoke("NextLevel", exitWaitTime);
+        }
+        else
+        {
+            OnRoomRequirementsNotMet?.Invoke();
+        }
+    }
 }
