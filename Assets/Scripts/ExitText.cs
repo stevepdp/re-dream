@@ -9,7 +9,7 @@ public class ExitText : MonoBehaviour
 
     void Awake()
     {
-        roomRequirementsText = transform.GetComponent<TextMeshPro>();
+        roomRequirementsText = transform.GetComponent<TMP_Text>();
     }
 
     void Start()

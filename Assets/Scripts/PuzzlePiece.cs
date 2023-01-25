@@ -12,7 +12,6 @@ public class PuzzlePiece : Item
         if (other.gameObject.CompareTag("Player"))
         {
             OnPuzzlePieceCollected?.Invoke();
-            Destroy(gameObject);
         }
     }
 }
