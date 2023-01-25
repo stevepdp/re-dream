@@ -9,13 +9,16 @@ public class GameManager : MonoBehaviour
     public static GameManager instance = null;
 
     public static event Action OnPlayerCrystalCountUpdated;
+    public static event Action OnPlayerPuzzlePiecesCountUpdated;
     public static event Action OnRoomRequirementsMet;
     public static event Action OnRoomRequirementsNotMet;
     public static event Action OnRoomCrystalsCounted;
+    public static event Action OnRoomPuzzlePiecesCounted;
 
     [SerializeField] private float exitWaitTime = 1.5f;
-    [SerializeField] private int playerPuzzlePieces = 0;
+    [SerializeField] private int playerPuzzlePiecesCount = 0;
     [SerializeField] private int playerCrystalsCount = 0;
+    [SerializeField] private int roomPuzzlePiecesTotal = 0;
     [SerializeField] private int roomCrystalsTotal = 0;
 
     public int PlayerCrystalsCount
@@ -24,16 +27,22 @@ public class GameManager : MonoBehaviour
         set { playerCrystalsCount = value; }
     }
 
-    public int PlayerPuzzlePieces
+    public int PlayerPuzzlePiecesCount
     {
-        get { return playerPuzzlePieces; }
-        set { playerPuzzlePieces = value; }
+        get { return playerPuzzlePiecesCount; }
+        set { playerPuzzlePiecesCount = value; }
     }
 
     public int RoomCrystalsTotal 
     {
         get { return roomCrystalsTotal; }
         set { roomCrystalsTotal = value; }
+    }
+
+    public int RoomPuzzlePiecesTotal
+    {
+        get { return roomPuzzlePiecesTotal; }
+        set { roomPuzzlePiecesTotal = value; }
     }
 
     void Awake()
@@ -56,6 +65,13 @@ public class GameManager : MonoBehaviour
         Exit.OnPlayerEnteredExit -= TestRoomRequirementsMet;
         PuzzlePiece.OnPuzzlePieceCollected -= IncrementPuzzlePiece;
         SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void CountRoomPuzzlePieces()
+    {
+        PuzzlePiece[] puzzlePieces = FindObjectsOfType<PuzzlePiece>();
+        roomPuzzlePiecesTotal = puzzlePieces.Length;
+        OnRoomPuzzlePiecesCounted?.Invoke();
     }
 
     void CountRoomCrystals()
@@ -82,7 +98,8 @@ public class GameManager : MonoBehaviour
     }
 
     void IncrementPuzzlePiece() {
-        playerPuzzlePieces += 1;
+        playerPuzzlePiecesCount += 1;
+        OnPlayerPuzzlePiecesCountUpdated?.Invoke();
     }
 
     public void LevelReset()
@@ -93,10 +110,13 @@ public class GameManager : MonoBehaviour
     void LevelSetup()
     {
         roomCrystalsTotal = 0;
+        roomPuzzlePiecesTotal = 0;
         playerCrystalsCount = 0;
-        playerPuzzlePieces = 0;
+        playerPuzzlePiecesCount = 0;
         OnPlayerCrystalCountUpdated?.Invoke();
+        OnPlayerPuzzlePiecesCountUpdated?.Invoke();
         CountRoomCrystals();
+        CountRoomPuzzlePieces();
     }
 
     void NextLevel()
@@ -111,7 +131,7 @@ public class GameManager : MonoBehaviour
 
     void TestRoomRequirementsMet()
     {
-        if (playerPuzzlePieces == 1)
+        if (playerPuzzlePiecesCount == roomPuzzlePiecesTotal)
         {
             OnRoomRequirementsMet?.Invoke();
             Invoke("NextLevel", exitWaitTime);
