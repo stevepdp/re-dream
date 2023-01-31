@@ -27,6 +27,7 @@ You will need to install TMP Essentials too via Window > Text Mesh Pro and click
 
 These packages are noted in the json files and as such should be imported automatically when running the project for the first time:
 
+* NavMeshComponents - installed via Git `com.unity.ai.navigation`  
 * ProBuilder - installed via Unity Registry  
 * ProGrids - installed via Git `com.unity.progrids`  
 
