@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int aggroDistance = 7;
     [SerializeField] private int giveUpDistance = 14;
     [SerializeField] private int hp = 1;
+    [SerializeField] private float moveSpeed;
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Transform player;
     [SerializeField] private Vector3 basePos;
@@ -36,16 +37,7 @@ public class Enemy : MonoBehaviour
 
     void OnParticleCollision(GameObject other)
     {
-        //Destroy(other.gameObject);
         DeductHP();
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            //DeductHP();
-        }
     }
 
     void ChasePlayer()
@@ -96,6 +88,7 @@ public class Enemy : MonoBehaviour
     void SetupEnemy()
     {
         agent = GetComponent<NavMeshAgent>();
+        agent.speed = moveSpeed;
         basePos = transform.position;
         isIdle = true;
         startingColour = renderer.material.color;
