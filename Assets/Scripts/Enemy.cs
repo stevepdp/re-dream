@@ -34,6 +34,12 @@ public class Enemy : MonoBehaviour
         ChasePlayer();
     }
 
+    void OnParticleCollision(GameObject other)
+    {
+        //Destroy(other.gameObject);
+        DeductHP();
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))

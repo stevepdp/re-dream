@@ -13,7 +13,7 @@ For the project's Player prefab to work correctly, please license this asset and
 
 `Assets/_Imports/StarterAssets`  
 
-Next, on the Player prefab, under Player Input, change the Actions scriptable object from `StarterAssets` to our own `StarterAssetsCustom`. The file is located at `Assets/Scripts/StarterAssets/InputSystem/StarterAssetsCustom.inputsettings` and this will allow our custom controls to work.
+Next, on the Player prefab, under Player Input, change the Actions scriptable object from `StarterAssets` to our own `PlayerControls`. The file is located at `Assets/Scripts/StarterAssets/InputSystem/PlayerControls.inputsettings` and this will allow our custom controls to work.
 
 
 ## Dependencies To Install Via Unity
