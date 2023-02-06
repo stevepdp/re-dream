@@ -81,3 +81,6 @@ Assets/_Imports/*
 # Build Leftovers
 connectwebgl.zip
 webgl_sharing
+
+# Upgrade Leftovers
+UpgradeLog.htm
