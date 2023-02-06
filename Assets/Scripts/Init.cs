@@ -12,6 +12,11 @@ public class Init : MonoBehaviour
         CleanupObjects();
         NextScene();
     }
+    void OnApplicationFocus()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
 
     void CleanupObjects()
     {
