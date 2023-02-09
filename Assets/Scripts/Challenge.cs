@@ -3,17 +3,38 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+public enum ChallengeType
+{
+    DefeatEnemiesNoTimer,
+    SpeedReducedDefeatEnemiesNoTimer,
+    JumpDisabledSurviveTimer,
+    WeaponDisabledSurviveTimer,
+    ContinuousEnemiesSurviveTimer,
+    ContinuousEnemiesSpeedReducedSurviveTimer,
+    ContinuousEnemiesJumpDisabledSurviveTimer
+}
+
 public class Challenge : MonoBehaviour
 {
+    [SerializeField] ChallengeType challengeType;
+
     [SerializeField] Transform challengePuzzlePiece;
     [SerializeField] Transform challengePuzzlePieceTarget;
+    [SerializeField] List<GameObject> challengeSpawnPoints;
     [SerializeField] List<GameObject> challengeWalls;
+    [SerializeField] List<GameObject> enemyPrefabsToSpawn;
     [SerializeField] TMP_Text challengeInstructionsText;
 
+    [SerializeField] bool challengeIsOngoing;
+    [SerializeField] bool challengeIsComplete;
     [SerializeField] bool challengePuzzlePieceReleased;
-    [SerializeField] bool challengeRequirementsMet;
     [SerializeField] bool challengePuzzlePieceCollected;
+    [SerializeField] float challengeEnemySpawnDelay;
+    [SerializeField] float challengeEndDelay;
     [SerializeField] float challengeStartDelay;
+    [SerializeField] int challengeTimeoutSeconds;
+    [SerializeField] int enemiesDefeated;
+    [SerializeField] string challengeInstructions;
 
     void OnEnable()
     {
@@ -27,18 +48,24 @@ public class Challenge : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player") && !challengeRequirementsMet)
+        if (other.gameObject.CompareTag("Player") && !challengeIsOngoing && !challengeIsComplete)
         {
             Invoke("StartChallenge", challengeStartDelay);
         }
     }
 
+    void StartDefeatEnemiesNoTimer()
+    {
+        // For the purposes of dev/testing, invoke immediate release
+        Invoke("EndChallenge", challengeEndDelay);
+    }
+
     void EndChallenge()
     {
-        challengeRequirementsMet = true;
-        if (challengeRequirementsMet && !challengePuzzlePieceReleased && !challengePuzzlePieceCollected)
+        challengeIsComplete = true;
+        if (challengeIsComplete && !challengePuzzlePieceReleased && !challengePuzzlePieceCollected)
         {
-            Debug.Log("Challenge requirements met!");
+            challengeInstructionsText.text = "Congratulations!";
             challengePuzzlePiece.position = challengePuzzlePieceTarget.position;
             challengePuzzlePiece.parent = challengePuzzlePieceTarget;
             challengePuzzlePieceReleased = true;
@@ -58,23 +85,32 @@ public class Challenge : MonoBehaviour
         challengeInstructionsText.GetComponent<MeshRenderer>().enabled = false;
     }
 
-    void SetChallengeText(string instructions) 
+    void SetChallengeText() 
     {
-        challengeInstructionsText.text = instructions;
+        challengeInstructionsText.text = challengeInstructions;
         challengeInstructionsText.GetComponent<MeshRenderer>().enabled = true;
     }
 
     void StartChallenge()
     {
+        challengeIsOngoing = true;
         WallsUp();
 
-        // For the purposes of dev/testing, invoke immediate release
-        Invoke("EndChallenge", 2f);
+        switch (challengeType)
+        {
+            case ChallengeType.DefeatEnemiesNoTimer:
+                StartDefeatEnemiesNoTimer();
+                return;
+
+            default:
+                Invoke("EndChallenge", challengeEndDelay);
+                return;
+        }
     }
 
     void WallsDown()
     {
-        if (challengeRequirementsMet && challengePuzzlePieceCollected)
+        if (challengeIsComplete && challengePuzzlePieceCollected)
         {
             Debug.Log("Walls coming down!");
             foreach (GameObject wall in challengeWalls)
@@ -89,7 +125,7 @@ public class Challenge : MonoBehaviour
 
     void WallsUp()
     {
-        if (challengeWalls.Count > 0 && !challengeRequirementsMet)
+        if (challengeWalls.Count > 0 && !challengeIsComplete)
         {
             Debug.Log("Walls going up!");
             foreach (GameObject wall in challengeWalls)
@@ -98,7 +134,7 @@ public class Challenge : MonoBehaviour
                 wall.GetComponent<MeshRenderer>().enabled = true;
             }
 
-            SetChallengeText("Defeat All Enemies!");
+            SetChallengeText();
         }
     }
 }
