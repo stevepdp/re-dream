@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Challenge : MonoBehaviour
 {
     [SerializeField] Transform challengePuzzlePiece;
     [SerializeField] Transform challengePuzzlePieceTarget;
-    [SerializeField] List <GameObject> challengeWalls;
+    [SerializeField] List<GameObject> challengeWalls;
+    [SerializeField] TMP_Text challengeInstructionsText;
 
     [SerializeField] bool challengePuzzlePieceReleased;
     [SerializeField] bool challengeRequirementsMet;
@@ -50,6 +52,18 @@ public class Challenge : MonoBehaviour
         WallsDown();
     }
 
+    void RemoveChallengeText()
+    {
+        challengeInstructionsText.text = "";
+        challengeInstructionsText.GetComponent<MeshRenderer>().enabled = false;
+    }
+
+    void SetChallengeText(string instructions) 
+    {
+        challengeInstructionsText.text = instructions;
+        challengeInstructionsText.GetComponent<MeshRenderer>().enabled = true;
+    }
+
     void StartChallenge()
     {
         WallsUp();
@@ -68,6 +82,8 @@ public class Challenge : MonoBehaviour
                 wall.GetComponent<MeshCollider>().enabled = false;
                 wall.GetComponent<MeshRenderer>().enabled = false;
             }
+
+            RemoveChallengeText();
         }
     }
 
@@ -81,6 +97,8 @@ public class Challenge : MonoBehaviour
                 wall.GetComponent<MeshCollider>().enabled = true;
                 wall.GetComponent<MeshRenderer>().enabled = true;
             }
+
+            SetChallengeText("Defeat All Enemies!");
         }
     }
 }
