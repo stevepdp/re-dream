@@ -129,7 +129,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh55332
+  m_Name: pb_Mesh28806
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -330,7 +330,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29122
+  m_Name: pb_Mesh29156
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1897,6 +1897,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   challengeType: 0
+  lastSpawnPos: {x: 0, y: 0, z: 0}
   challengePuzzlePiece: {fileID: 1037764675}
   challengePuzzlePieceTarget: {fileID: 1522382183}
   challengeSpawnPoints:
@@ -1904,7 +1905,7 @@ MonoBehaviour:
   - {fileID: 2069455815}
   - {fileID: 1360317484}
   - {fileID: 1514963617}
-  - {fileID: 2069455815}
+  - {fileID: 291081713}
   challengeWalls:
   - {fileID: 484751768}
   - {fileID: 174607973}
@@ -1917,10 +1918,11 @@ MonoBehaviour:
   challengePuzzlePieceReleased: 0
   challengePuzzlePieceCollected: 0
   challengeEnemySpawnDelay: 1
-  challengeEndDelay: 4
+  challengeEndDelay: 0
   challengeStartDelay: 2
+  challengeEnemiesDefeated: 0
   challengeTimeoutSeconds: 0
-  enemiesDefeated: 0
+  challengeEnemiesToDefeat: 5
   challengeInstructions: Defeat 5 enemies!
 --- !u!65 &617327555
 BoxCollider:
@@ -1941,7 +1943,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29062
+  m_Name: pb_Mesh29096
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2899,7 +2901,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh55554
+  m_Name: pb_Mesh29030
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3476,13 +3478,13 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!43 &1236858658
+--- !u!43 &1300441341
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29096
+  m_Name: pb_Mesh29134
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4067,7 +4069,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29046
+  m_Name: pb_Mesh29080
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4590,7 +4592,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29072
+  m_Name: pb_Mesh29106
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5862,7 +5864,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh55370
+  m_Name: pb_Mesh28844
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -14327,7 +14329,7 @@ MeshCollider:
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 1236858658}
+  m_Mesh: {fileID: 1300441341}
 --- !u!4 &5600907565176471434
 Transform:
   m_ObjectHideFlags: 0
@@ -14605,8 +14607,8 @@ MonoBehaviour:
     m_AreaError: 15
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
-  m_Mesh: {fileID: 1236858658}
-  m_VersionIndex: 4616
+  m_Mesh: {fileID: 1300441341}
+  m_VersionIndex: 4619
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -14618,7 +14620,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5600907565176471424}
-  m_Mesh: {fileID: 1236858658}
+  m_Mesh: {fileID: 1300441341}
 --- !u!23 &5600907565176471439
 MeshRenderer:
   m_ObjectHideFlags: 0

@@ -19,6 +19,12 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private Vector3 basePos;
 
+    public int HP
+    {
+        get { return hp; }
+        set { hp = value; }
+    }
+
     private Color startingColour;
     private Renderer renderer;
 
@@ -77,7 +83,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void DeductHP()
+    public virtual void DeductHP()
     {
         hp--;
         if (hp <= 0) Destroy(gameObject);

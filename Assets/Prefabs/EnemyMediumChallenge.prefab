@@ -7,14 +7,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1113607581007730625, guid: 84a298cb57b79684a928100debd6801d, type: 3}
-      propertyPath: aggroDistance
-      value: 99
-      objectReference: {fileID: 0}
-    - target: {fileID: 1113607581007730625, guid: 84a298cb57b79684a928100debd6801d, type: 3}
-      propertyPath: giveUpDistance
-      value: 99
-      objectReference: {fileID: 0}
     - target: {fileID: 1113607581007730631, guid: 84a298cb57b79684a928100debd6801d, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -63,5 +55,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyMediumChallenge
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7268093970601807867, guid: 84a298cb57b79684a928100debd6801d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 84a298cb57b79684a928100debd6801d, type: 3}
+--- !u!1 &8407421756549167713 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1113607581007730635, guid: 84a298cb57b79684a928100debd6801d, type: 3}
+  m_PrefabInstance: {fileID: 8924302377937612202}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1956315571865495508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8407421756549167713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7e5f5ab12a08a540a7ff6df8ab8d1c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasChased: 0
+  isChasing: 0
+  isIdle: 0
+  aggroDistance: 99
+  giveUpDistance: 99
+  hp: 1
+  moveSpeed: 3
+  agent: {fileID: 0}
+  player: {fileID: 0}
+  basePos: {x: 0, y: 0, z: 0}

@@ -17,6 +17,7 @@ public enum ChallengeType
 public class Challenge : MonoBehaviour
 {
     [SerializeField] ChallengeType challengeType;
+    [SerializeField] Vector3 lastSpawnPos;
 
     [SerializeField] Transform challengePuzzlePiece;
     [SerializeField] Transform challengePuzzlePieceTarget;
@@ -32,17 +33,22 @@ public class Challenge : MonoBehaviour
     [SerializeField] float challengeEnemySpawnDelay;
     [SerializeField] float challengeEndDelay;
     [SerializeField] float challengeStartDelay;
+    [SerializeField] int challengeEnemiesDefeated;
     [SerializeField] int challengeTimeoutSeconds;
-    [SerializeField] int enemiesDefeated;
+    [SerializeField] int challengeEnemiesToDefeat;
     [SerializeField] string challengeInstructions;
+
+    int enemiesReleased;
 
     void OnEnable()
     {
+        EnemyChallenge.OnChallengeEnemyDefeated += IncrementKillCount;
         PuzzlePieceForChallenges.OnChallengePuzzlePieceCollected += SetChallengePuzzlePieceCollected;
     }
 
     void OnDisable()
     {
+        EnemyChallenge.OnChallengeEnemyDefeated -= IncrementKillCount;
         PuzzlePieceForChallenges.OnChallengePuzzlePieceCollected -= SetChallengePuzzlePieceCollected;
     }
 
@@ -52,12 +58,6 @@ public class Challenge : MonoBehaviour
         {
             Invoke("StartChallenge", challengeStartDelay);
         }
-    }
-
-    void StartDefeatEnemiesNoTimer()
-    {
-        // For the purposes of dev/testing, invoke immediate release
-        Invoke("EndChallenge", challengeEndDelay);
     }
 
     void EndChallenge()
@@ -72,11 +72,10 @@ public class Challenge : MonoBehaviour
         }
     }
 
-    void SetChallengePuzzlePieceCollected()
+    void IncrementKillCount()
     {
-        Debug.Log("Puzzle piece collected!");
-        challengePuzzlePieceCollected = true;
-        WallsDown();
+        challengeEnemiesDefeated++;
+        TestChallengeConditionsMet();
     }
 
     void RemoveChallengeText()
@@ -85,10 +84,40 @@ public class Challenge : MonoBehaviour
         challengeInstructionsText.GetComponent<MeshRenderer>().enabled = false;
     }
 
+    void SetChallengePuzzlePieceCollected()
+    {
+        Debug.Log("Puzzle piece collected!");
+        challengePuzzlePieceCollected = true;
+        WallsDown();
+    }
+
     void SetChallengeText() 
     {
         challengeInstructionsText.text = challengeInstructions;
         challengeInstructionsText.GetComponent<MeshRenderer>().enabled = true;
+    }
+
+    void SpawnEnemy()
+    {
+        while (enemiesReleased < challengeEnemiesToDefeat)
+        {
+            int spawnPosChoice = Random.Range(0, challengeSpawnPoints.Count);
+            int enemyToSpawn = Random.Range(0, enemyPrefabsToSpawn.Count);
+
+            if (challengeSpawnPoints[spawnPosChoice].GetComponent<Transform>().position == lastSpawnPos)
+            {
+                // prefering not to instantiate in the same position, so loop over again
+                continue;
+            }
+
+            Instantiate(enemyPrefabsToSpawn[enemyToSpawn], challengeSpawnPoints[spawnPosChoice].transform.position, Quaternion.identity);
+            lastSpawnPos = challengeSpawnPoints[spawnPosChoice].transform.position;
+            enemiesReleased++;
+            break;
+        }
+
+        if (enemiesReleased > challengeEnemiesToDefeat)
+            CancelInvoke("SpawnEnemy");
     }
 
     void StartChallenge()
@@ -105,6 +134,21 @@ public class Challenge : MonoBehaviour
             default:
                 Invoke("EndChallenge", challengeEndDelay);
                 return;
+        }
+    }
+
+    void StartDefeatEnemiesNoTimer()
+    {
+        Debug.Log(string.Format("Starting challenge: Defeat {0} Enemies, No Timer", challengeEnemiesToDefeat));
+        InvokeRepeating("SpawnEnemy", challengeEnemySpawnDelay, challengeEnemySpawnDelay);
+    }
+
+    void TestChallengeConditionsMet()
+    {
+        if (challengeType == ChallengeType.DefeatEnemiesNoTimer && challengeEnemiesDefeated >= challengeEnemiesToDefeat)
+        {
+            challengeIsOngoing = false;
+            Invoke("EndChallenge", challengeEndDelay);
         }
     }
 
