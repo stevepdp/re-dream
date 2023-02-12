@@ -272,7 +272,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 503
+  m_VersionIndex: 542
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -788,7 +788,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1211
+  m_VersionIndex: 1250
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1294,7 +1294,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1124
+  m_VersionIndex: 1163
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1437,7 +1437,6 @@ GameObject:
   - component: {fileID: 6187089031455755379}
   - component: {fileID: 6187089031455755278}
   - component: {fileID: 6187089031455755277}
-  - component: {fileID: 4696421798249432162}
   m_Layer: 5
   m_Name: PuzzlePiecesCollectedText
   m_TagString: Untagged
@@ -1562,18 +1561,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &4696421798249432162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6187089031455755378}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21cb140965b1d3e4692c3415a6e6dc5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6187089031456572830
 GameObject:
   m_ObjectHideFlags: 0
@@ -1698,6 +1685,7 @@ GameObject:
   - component: {fileID: 6187089032028070763}
   - component: {fileID: 6187089032028070762}
   - component: {fileID: 6187089032028070761}
+  - component: {fileID: 8710620714598575555}
   m_Layer: 5
   m_Name: HUDCanvas
   m_TagString: Untagged
@@ -1791,6 +1779,21 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &8710620714598575555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6187089032028070760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81b680256bf91af4391572c7c746cd3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasCam: {fileID: 6187089031779518149}
+  hudCrystalCountText: {fileID: 6187089033406687590}
+  hudPuzzlePieceCountText: {fileID: 6187089031455755277}
 --- !u!1 &6187089032087625129
 GameObject:
   m_ObjectHideFlags: 0
@@ -1839,7 +1842,6 @@ GameObject:
   - component: {fileID: 6187089033406687589}
   - component: {fileID: 6187089033406687591}
   - component: {fileID: 6187089033406687590}
-  - component: {fileID: 6187089033406687584}
   m_Layer: 5
   m_Name: CrystalsCollectedText
   m_TagString: Untagged
@@ -1964,15 +1966,3 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &6187089033406687584
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6187089033406687588}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f470516ab39a8944f94dac2db66f5b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

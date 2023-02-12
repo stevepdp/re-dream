@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Init : MonoBehaviour
 {
-    [SerializeField] GameManager gameManager;
+    [SerializeField] GameObject gameManager;
+    [SerializeField] GameObject inputManager;
 
     void Start()
     {
@@ -20,12 +21,18 @@ public class Init : MonoBehaviour
 
     void CleanupObjects()
     {
-        GameObject[] oldGameManager = GameObject.FindGameObjectsWithTag("GameController");
+        GameObject[] oldGameObject = GameObject.FindGameObjectsWithTag("GameController");
 
-        if (oldGameManager.Length > 0)
-            Destroy(oldGameManager[0]);
+        if (oldGameObject?.Length > 0)
+            Destroy(oldGameObject[0]);
+
+        oldGameObject = GameObject.FindGameObjectsWithTag("InputManager");
+
+        if (oldGameObject?.Length > 0)
+            Destroy(oldGameObject[0]);
 
         Instantiate(gameManager);
+        Instantiate(inputManager);
     }
 
     void NextScene() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
