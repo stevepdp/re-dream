@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -38,6 +39,9 @@ public class Challenge : MonoBehaviour
     [SerializeField] int challengeEnemiesToDefeat;
     [SerializeField] string challengeInstructions;
 
+    public static event Action OnReducePlayerSpeed;
+    public static event Action OnRestorePlayerSpeed;
+
     int enemiesReleased;
 
     void OnEnable()
@@ -63,6 +67,8 @@ public class Challenge : MonoBehaviour
     void EndChallenge()
     {
         challengeIsComplete = true;
+        challengeIsOngoing = false;
+        
         if (challengeIsComplete && !challengePuzzlePieceReleased && !challengePuzzlePieceCollected)
         {
             challengeInstructionsText.text = "Congratulations!";
@@ -101,8 +107,8 @@ public class Challenge : MonoBehaviour
     {
         while (enemiesReleased < challengeEnemiesToDefeat)
         {
-            int spawnPosChoice = Random.Range(0, challengeSpawnPoints.Count);
-            int enemyToSpawn = Random.Range(0, enemyPrefabsToSpawn.Count);
+            int spawnPosChoice = UnityEngine.Random.Range(0, challengeSpawnPoints.Count);
+            int enemyToSpawn = UnityEngine.Random.Range(0, enemyPrefabsToSpawn.Count);
 
             if (challengeSpawnPoints[spawnPosChoice].GetComponent<Transform>().position == lastSpawnPos)
             {
@@ -131,6 +137,10 @@ public class Challenge : MonoBehaviour
                 StartDefeatEnemiesNoTimer();
                 return;
 
+            case ChallengeType.SpeedReducedDefeatEnemiesNoTimer:
+                StartSpeedReducedDefeatEnemiesNoTimer();
+                return;
+
             default:
                 Invoke("EndChallenge", challengeEndDelay);
                 return;
@@ -139,7 +149,13 @@ public class Challenge : MonoBehaviour
 
     void StartDefeatEnemiesNoTimer()
     {
-        Debug.Log(string.Format("Starting challenge: Defeat {0} Enemies, No Timer", challengeEnemiesToDefeat));
+        Debug.Log(string.Format("Starting challenge: Defeat {0} Enemies. No Timer", challengeEnemiesToDefeat));
+        InvokeRepeating("SpawnEnemy", challengeEnemySpawnDelay, challengeEnemySpawnDelay);
+    }
+
+    void StartSpeedReducedDefeatEnemiesNoTimer() {
+        Debug.Log(string.Format("Starting challenge: Speed reduced. Defeat {0} Enemies. No Timer", challengeEnemiesToDefeat));
+        OnReducePlayerSpeed?.Invoke();
         InvokeRepeating("SpawnEnemy", challengeEnemySpawnDelay, challengeEnemySpawnDelay);
     }
 
@@ -147,7 +163,11 @@ public class Challenge : MonoBehaviour
     {
         if (challengeType == ChallengeType.DefeatEnemiesNoTimer && challengeEnemiesDefeated >= challengeEnemiesToDefeat)
         {
-            challengeIsOngoing = false;
+            Invoke("EndChallenge", challengeEndDelay);
+        }
+        else if (challengeType == ChallengeType.SpeedReducedDefeatEnemiesNoTimer && challengeEnemiesDefeated >= challengeEnemiesToDefeat)
+        {
+            OnRestorePlayerSpeed?.Invoke();
             Invoke("EndChallenge", challengeEndDelay);
         }
     }
