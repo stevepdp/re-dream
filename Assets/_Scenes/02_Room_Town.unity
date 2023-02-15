@@ -129,7 +129,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh59986
+  m_Name: pb_Mesh28168
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2060,12 +2060,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9db289b92cbe2d54cbd98734bf82790b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  challengeType: 1
+  challengeType: 2
   lastSpawnPos: {x: 0, y: 0, z: 0}
   challengePuzzlePiece: {fileID: 1037764675}
   challengePuzzlePieceTarget: {fileID: 1522382183}
   challengeSpawnPoints:
   - {fileID: 423667456}
+  - {fileID: 214459293}
   - {fileID: 2069455815}
   - {fileID: 1360317484}
   - {fileID: 1514963617}
@@ -2077,17 +2078,15 @@ MonoBehaviour:
   - {fileID: 7504717306810828351, guid: f8813f4f61440a24583aa6197fc5bc09, type: 3}
   - {fileID: 8407421756549167713, guid: 1ba8a2278c8173a48b2341d26f59dfe5, type: 3}
   challengeInstructionsText: {fileID: 753932882}
-  challengeIsOngoing: 0
-  challengeIsComplete: 0
-  challengePuzzlePieceReleased: 0
-  challengePuzzlePieceCollected: 0
+  challengeShowStats: 0
+  useDeveloperTime: 0
   challengeEnemySpawnDelay: 1
   challengeEndDelay: 0
   challengeStartDelay: 2
+  challengeLengthInSecs: 30
   challengeEnemiesDefeated: 0
-  challengeTimeoutSeconds: 0
-  challengeEnemiesToDefeat: 5
-  challengeInstructions: Defeat 5 enemies!<br><size=75%>(speed reduced)</size>
+  challengeEnemiesToDefeat: 10
+  challengeInstructions: Defeat 10 enemies!<br><size=75%>(speed reduced)</size>
 --- !u!65 &617327555
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3637,7 +3636,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh60234
+  m_Name: pb_Mesh28416
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6600,7 +6599,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh60026
+  m_Name: pb_Mesh28208
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

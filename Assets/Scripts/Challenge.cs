@@ -7,12 +7,13 @@ using UnityEngine;
 public enum ChallengeType
 {
     DefeatEnemiesNoTimer,
+    EndlessEnemiesSurviveTimer,
     SpeedReducedDefeatEnemiesNoTimer,
-    JumpDisabledSurviveTimer,
-    WeaponDisabledSurviveTimer,
-    ContinuousEnemiesSurviveTimer,
-    ContinuousEnemiesSpeedReducedSurviveTimer,
-    ContinuousEnemiesJumpDisabledSurviveTimer
+    //JumpDisabledSurviveTimer,
+    //WeaponDisabledSurviveTimer,
+    //ContinuousEnemiesSurviveTimer,
+    //ContinuousEnemiesSpeedReducedSurviveTimer,
+    //ContinuousEnemiesJumpDisabledSurviveTimer
 }
 
 public class Challenge : MonoBehaviour
@@ -27,18 +28,23 @@ public class Challenge : MonoBehaviour
     [SerializeField] List<GameObject> enemyPrefabsToSpawn;
     [SerializeField] TMP_Text challengeInstructionsText;
 
-    [SerializeField] bool challengeIsOngoing;
-    [SerializeField] bool challengeIsComplete;
-    [SerializeField] bool challengePuzzlePieceReleased;
-    [SerializeField] bool challengePuzzlePieceCollected;
+    bool challengeIsOngoing;
+    bool challengeIsComplete;
+    bool challengePuzzlePieceReleased;
+    bool challengePuzzlePieceCollected;
+    [SerializeField] bool challengeShowStats;
+    [SerializeField] bool useDeveloperTime;
     [SerializeField] float challengeEnemySpawnDelay;
     [SerializeField] float challengeEndDelay;
     [SerializeField] float challengeStartDelay;
+    [SerializeField] int challengeLengthInSecs;
+    int challengeTimeRemaining;
     [SerializeField] int challengeEnemiesDefeated;
-    [SerializeField] int challengeTimeoutSeconds;
     [SerializeField] int challengeEnemiesToDefeat;
     [SerializeField] string challengeInstructions;
 
+    public static event Action OnChallengeEnemyAutokill;
+    public static event Action OnDisableWeapon;
     public static event Action OnReducePlayerSpeed;
     public static event Action OnRestorePlayerSpeed;
 
@@ -64,14 +70,37 @@ public class Challenge : MonoBehaviour
         }
     }
 
+    IEnumerator CountdownTimer()
+    {
+#if UNITY_EDITOR
+        if (useDeveloperTime) challengeTimeRemaining = 10;
+#endif
+        while (challengeTimeRemaining > 0)
+        {
+            challengeInstructionsText.text = string.Format("Survive: {0}", challengeTimeRemaining);
+            challengeTimeRemaining -= 1;
+            yield return new WaitForSeconds(1f);
+        }
+
+        EndChallenge();
+    }
+
     void EndChallenge()
     {
         challengeIsComplete = true;
         challengeIsOngoing = false;
-        
+
+        OnChallengeEnemyAutokill?.Invoke();
+
         if (challengeIsComplete && !challengePuzzlePieceReleased && !challengePuzzlePieceCollected)
         {
             challengeInstructionsText.text = "Congratulations!";
+
+            if (challengeShowStats)
+            {
+                challengeInstructionsText.text += "<br>";
+                challengeInstructionsText.text += string.Format("<size=50%>{0} enemies defeated!</size>", challengeEnemiesDefeated);
+            }
             challengePuzzlePiece.position = challengePuzzlePieceTarget.position;
             challengePuzzlePiece.parent = challengePuzzlePieceTarget;
             challengePuzzlePieceReleased = true;
@@ -80,8 +109,11 @@ public class Challenge : MonoBehaviour
 
     void IncrementKillCount()
     {
-        challengeEnemiesDefeated++;
-        TestChallengeConditionsMet();
+        if (challengeIsOngoing)
+        {      
+            challengeEnemiesDefeated++;
+            TestChallengeConditionsMet();
+        }
     }
 
     void RemoveChallengeText()
@@ -101,6 +133,25 @@ public class Challenge : MonoBehaviour
     {
         challengeInstructionsText.text = challengeInstructions;
         challengeInstructionsText.GetComponent<MeshRenderer>().enabled = true;
+    }
+
+    void KeepSpawningEnemies()
+    {
+        while (challengeTimeRemaining >= 0)
+        {
+            int spawnPosChoice = UnityEngine.Random.Range(0, challengeSpawnPoints.Count);
+            int enemyToSpawn = UnityEngine.Random.Range(0, enemyPrefabsToSpawn.Count);
+
+            if (challengeSpawnPoints[spawnPosChoice].GetComponent<Transform>().position == lastSpawnPos)
+                continue;
+
+            Instantiate(enemyPrefabsToSpawn[enemyToSpawn], challengeSpawnPoints[spawnPosChoice].transform.position, Quaternion.identity);
+            lastSpawnPos = challengeSpawnPoints[spawnPosChoice].transform.position;
+            break;
+        }
+
+        if (challengeTimeRemaining <= 0)
+            CancelInvoke("KeepSpawningEnemies");
     }
 
     void SpawnEnemy()
@@ -141,6 +192,10 @@ public class Challenge : MonoBehaviour
                 StartSpeedReducedDefeatEnemiesNoTimer();
                 return;
 
+            case ChallengeType.EndlessEnemiesSurviveTimer:
+                StartEndlessEnemiesSurviveTimer();
+                return;
+
             default:
                 Invoke("EndChallenge", challengeEndDelay);
                 return;
@@ -153,7 +208,16 @@ public class Challenge : MonoBehaviour
         InvokeRepeating("SpawnEnemy", challengeEnemySpawnDelay, challengeEnemySpawnDelay);
     }
 
-    void StartSpeedReducedDefeatEnemiesNoTimer() {
+    void StartEndlessEnemiesSurviveTimer()
+    {
+        challengeTimeRemaining = challengeLengthInSecs;
+        Debug.Log(string.Format("Starting challenge: Endless enemies. Survive {0} seconds.", challengeTimeRemaining));
+        StartCoroutine(CountdownTimer());
+        InvokeRepeating("KeepSpawningEnemies", challengeEnemySpawnDelay, challengeEnemySpawnDelay);
+    }
+
+    void StartSpeedReducedDefeatEnemiesNoTimer()
+    {
         Debug.Log(string.Format("Starting challenge: Speed reduced. Defeat {0} Enemies. No Timer", challengeEnemiesToDefeat));
         OnReducePlayerSpeed?.Invoke();
         InvokeRepeating("SpawnEnemy", challengeEnemySpawnDelay, challengeEnemySpawnDelay);
