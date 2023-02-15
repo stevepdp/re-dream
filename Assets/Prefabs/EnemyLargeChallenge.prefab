@@ -81,7 +81,7 @@ MonoBehaviour:
   aggroDistance: 99
   giveUpDistance: 99
   hp: 1
-  moveSpeed: 2.5
+  moveSpeed: 3
   agent: {fileID: 0}
   player: {fileID: 0}
   basePos: {x: 0, y: 0, z: 0}

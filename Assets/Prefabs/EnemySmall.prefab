@@ -157,7 +157,7 @@ MonoBehaviour:
   aggroDistance: 7
   giveUpDistance: 14
   hp: 1
-  moveSpeed: 5.5
+  moveSpeed: 6.25
   agent: {fileID: 0}
   player: {fileID: 0}
   basePos: {x: 0, y: 0, z: 0}

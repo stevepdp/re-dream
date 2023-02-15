@@ -241,6 +241,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""411d1515-0462-4426-83b2-4de7b415be0c"",
+                    ""path"": ""<Keyboard>/rightShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""c8fcd86e-dcfd-4f88-8e93-b638cdbf3320"",
                     ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": """",
