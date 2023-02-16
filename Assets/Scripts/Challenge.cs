@@ -8,10 +8,9 @@ public enum ChallengeType
 {
     DefeatEnemiesNoTimer,
     EndlessEnemiesSurviveTimer,
-    SpeedReducedDefeatEnemiesNoTimer,
     //JumpDisabledSurviveTimer,
-    //WeaponDisabledSurviveTimer,
-    //ContinuousEnemiesSurviveTimer,
+    SpeedReducedDefeatEnemiesNoTimer,
+    WeaponDisabledSurviveTimer,
     //ContinuousEnemiesSpeedReducedSurviveTimer,
     //ContinuousEnemiesJumpDisabledSurviveTimer
 }
@@ -44,7 +43,8 @@ public class Challenge : MonoBehaviour
     [SerializeField] string challengeInstructions;
 
     public static event Action OnChallengeEnemyAutokill;
-    public static event Action OnDisableWeapon;
+    public static event Action OnDisableProjectile;
+    public static event Action OnEnableProjectile;
     public static event Action OnReducePlayerSpeed;
     public static event Action OnRestorePlayerSpeed;
 
@@ -79,6 +79,7 @@ public class Challenge : MonoBehaviour
         {
             challengeInstructionsText.text = string.Format("Survive: {0}", challengeTimeRemaining);
             challengeTimeRemaining -= 1;
+            TestChallengeConditionsMet();
             yield return new WaitForSeconds(1f);
         }
 
@@ -99,7 +100,7 @@ public class Challenge : MonoBehaviour
             if (challengeShowStats)
             {
                 challengeInstructionsText.text += "<br>";
-                challengeInstructionsText.text += string.Format("<size=50%>{0} enemies defeated!</size>", challengeEnemiesDefeated);
+                challengeInstructionsText.text += string.Format("<size=45%>{0} enemies defeated!</size>", challengeEnemiesDefeated);
             }
             challengePuzzlePiece.position = challengePuzzlePieceTarget.position;
             challengePuzzlePiece.parent = challengePuzzlePieceTarget;
@@ -196,6 +197,10 @@ public class Challenge : MonoBehaviour
                 StartEndlessEnemiesSurviveTimer();
                 return;
 
+            case ChallengeType.WeaponDisabledSurviveTimer:
+                StartWeaponDisabledSurviveTimer();
+                return;
+
             default:
                 Invoke("EndChallenge", challengeEndDelay);
                 return;
@@ -210,8 +215,8 @@ public class Challenge : MonoBehaviour
 
     void StartEndlessEnemiesSurviveTimer()
     {
-        challengeTimeRemaining = challengeLengthInSecs;
         Debug.Log(string.Format("Starting challenge: Endless enemies. Survive {0} seconds.", challengeTimeRemaining));
+        challengeTimeRemaining = challengeLengthInSecs;
         StartCoroutine(CountdownTimer());
         InvokeRepeating("KeepSpawningEnemies", challengeEnemySpawnDelay, challengeEnemySpawnDelay);
     }
@@ -223,15 +228,33 @@ public class Challenge : MonoBehaviour
         InvokeRepeating("SpawnEnemy", challengeEnemySpawnDelay, challengeEnemySpawnDelay);
     }
 
+    void StartWeaponDisabledSurviveTimer()
+    {
+        Debug.Log(string.Format("Starting challenge: Weapon disabled. Survive {0} seconds.", challengeTimeRemaining));
+        challengeTimeRemaining = challengeLengthInSecs;
+        OnDisableProjectile?.Invoke();
+        StartCoroutine(CountdownTimer());
+        InvokeRepeating("KeepSpawningEnemies", challengeEnemySpawnDelay, challengeEnemySpawnDelay);
+    }
+
     void TestChallengeConditionsMet()
     {
         if (challengeType == ChallengeType.DefeatEnemiesNoTimer && challengeEnemiesDefeated >= challengeEnemiesToDefeat)
         {
             Invoke("EndChallenge", challengeEndDelay);
         }
+        else if (challengeType == ChallengeType.EndlessEnemiesSurviveTimer && challengeTimeRemaining <= 0)
+        {
+            Invoke("EndChallenge", challengeEndDelay);
+        }
         else if (challengeType == ChallengeType.SpeedReducedDefeatEnemiesNoTimer && challengeEnemiesDefeated >= challengeEnemiesToDefeat)
         {
             OnRestorePlayerSpeed?.Invoke();
+            Invoke("EndChallenge", challengeEndDelay);
+        }
+        else if (challengeType == ChallengeType.WeaponDisabledSurviveTimer && challengeTimeRemaining <= 0)
+        {
+            OnEnableProjectile?.Invoke();
             Invoke("EndChallenge", challengeEndDelay);
         }
     }

@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 {
     public static event Action OnPlayerDead;
 
+    [SerializeField] bool canFire;
     [SerializeField] int hp = 3;
     [SerializeField] PlayerControls playerControls;
     [SerializeField] InputAction fire;
@@ -15,11 +16,14 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
+        canFire = true;
         playerControls = new PlayerControls();
     }
 
     void OnEnable()
     {
+        Challenge.OnDisableProjectile += DisableProjectile;
+        Challenge.OnEnableProjectile += EnableProjectile;
         fire = playerControls.Player.Fire;
         fire.Enable();
         fire.performed += FireProjectile;
@@ -27,6 +31,8 @@ public class Player : MonoBehaviour
 
     void OnDisable()
     {
+        Challenge.OnDisableProjectile -= DisableProjectile;
+        Challenge.OnEnableProjectile -= EnableProjectile;
         fire.Disable();
     }
 
@@ -44,5 +50,15 @@ public class Player : MonoBehaviour
             OnPlayerDead?.Invoke();
     }
 
-    void FireProjectile(InputAction.CallbackContext context) => particleProjectile.Play();
+    void DisableProjectile() => canFire = false;
+
+    void EnableProjectile() => canFire = true;
+
+    void FireProjectile(InputAction.CallbackContext context)
+    {
+        if (canFire) {
+            Debug.Log("Fire!!");
+            particleProjectile.Play();
+        }
+    }
 }
