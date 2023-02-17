@@ -3653,7 +3653,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh239386
+  m_Name: pb_Mesh124212
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -15266,7 +15266,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hintCanvas: {fileID: 1757058123}
   hintCanvasText: {fileID: 318573079}
-  triggerText: Collect crystals<br><size=50%>Let them guide you</size>
+  triggerText: Collect <b>crystals</b><br><size=50%>Let them guide you</size>
 --- !u!43 &1934030267
 Mesh:
   m_ObjectHideFlags: 0
