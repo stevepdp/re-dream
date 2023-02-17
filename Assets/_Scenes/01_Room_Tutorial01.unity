@@ -7896,7 +7896,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh211004
+  m_Name: pb_Mesh-374622
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -9098,7 +9098,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh210144
+  m_Name: pb_Mesh-374610
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -12173,11 +12173,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ReferenceResolution: {x: 1280, y: 720}
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -16781,6 +16781,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1355224184}
+    - target: {fileID: 3447228705052151650, guid: 211f0e8b86efc3440b7dafadaa121ff0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3447228705052151652, guid: 211f0e8b86efc3440b7dafadaa121ff0, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -16890,6 +16894,10 @@ PrefabInstance:
       value: HUDCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 6187089032028070760, guid: 211f0e8b86efc3440b7dafadaa121ff0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187089032087625129, guid: 211f0e8b86efc3440b7dafadaa121ff0, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
