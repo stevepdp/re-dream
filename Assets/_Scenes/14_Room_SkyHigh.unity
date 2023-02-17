@@ -20598,7 +20598,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh58524
+  m_Name: pb_Mesh116444
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -35912,7 +35912,7 @@ MonoBehaviour:
   challengeLengthInSecs: 30
   challengeEnemiesDefeated: 0
   challengeEnemiesToDefeat: 0
-  challengeInstructions: Weapon is disabled. Survive 30 seconds!
+  challengeInstructions: 
 --- !u!65 &5141842160724257225
 BoxCollider:
   m_ObjectHideFlags: 0

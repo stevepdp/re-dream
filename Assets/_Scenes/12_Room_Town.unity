@@ -2060,7 +2060,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9db289b92cbe2d54cbd98734bf82790b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  challengeType: 3
+  challengeType: 1
   lastSpawnPos: {x: 0, y: 0, z: 0}
   challengePuzzlePiece: {fileID: 1037764675}
   challengePuzzlePieceTarget: {fileID: 1522382183}
@@ -2079,14 +2079,14 @@ MonoBehaviour:
   - {fileID: 8407421756549167713, guid: 1ba8a2278c8173a48b2341d26f59dfe5, type: 3}
   challengeInstructionsText: {fileID: 753932882}
   challengeShowStats: 1
-  useDeveloperTime: 1
+  useDeveloperTime: 0
   challengeEnemySpawnDelay: 1
   challengeEndDelay: 0
   challengeStartDelay: 2
   challengeLengthInSecs: 30
   challengeEnemiesDefeated: 0
-  challengeEnemiesToDefeat: 10
-  challengeInstructions: Defeat 10 Enemies!<br><size=75%>(speed reduced)</size>
+  challengeEnemiesToDefeat: 0
+  challengeInstructions: 
 --- !u!65 &617327555
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3480,7 +3480,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh123570
+  m_Name: pb_Mesh108388
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
