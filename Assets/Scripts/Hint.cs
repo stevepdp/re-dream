@@ -39,7 +39,7 @@ public class Hint : MonoBehaviour
 
     void ShowMovementHint()
     {
-        hintText.text = "Press <bold>W</bold> or <bold>UP Arrow</bold> to move.";
+        hintText.text = "Press <b>W</b> or <b>UP Arrow</b> to move.";
         ShowHint();
     }
 }
