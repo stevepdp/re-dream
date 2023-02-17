@@ -125,7 +125,6 @@ public class Challenge : MonoBehaviour
 
     void SetChallengePuzzlePieceCollected()
     {
-        Debug.Log("Puzzle piece collected!");
         challengePuzzlePieceCollected = true;
         WallsDown();
     }
@@ -209,13 +208,11 @@ public class Challenge : MonoBehaviour
 
     void StartDefeatEnemiesNoTimer()
     {
-        Debug.Log(string.Format("Starting challenge: Defeat {0} Enemies. No Timer", challengeEnemiesToDefeat));
         InvokeRepeating("SpawnEnemy", challengeEnemySpawnDelay, challengeEnemySpawnDelay);
     }
 
     void StartEndlessEnemiesSurviveTimer()
     {
-        Debug.Log(string.Format("Starting challenge: Endless enemies. Survive {0} seconds.", challengeTimeRemaining));
         challengeTimeRemaining = challengeLengthInSecs;
         StartCoroutine(CountdownTimer());
         InvokeRepeating("KeepSpawningEnemies", challengeEnemySpawnDelay, challengeEnemySpawnDelay);
@@ -223,14 +220,12 @@ public class Challenge : MonoBehaviour
 
     void StartSpeedReducedDefeatEnemiesNoTimer()
     {
-        Debug.Log(string.Format("Starting challenge: Speed reduced. Defeat {0} Enemies. No Timer", challengeEnemiesToDefeat));
         OnReducePlayerSpeed?.Invoke();
         InvokeRepeating("SpawnEnemy", challengeEnemySpawnDelay, challengeEnemySpawnDelay);
     }
 
     void StartWeaponDisabledSurviveTimer()
     {
-        Debug.Log(string.Format("Starting challenge: Weapon disabled. Survive {0} seconds.", challengeTimeRemaining));
         challengeTimeRemaining = challengeLengthInSecs;
         OnDisableProjectile?.Invoke();
         StartCoroutine(CountdownTimer());
@@ -263,7 +258,6 @@ public class Challenge : MonoBehaviour
     {
         if (challengeIsComplete && challengePuzzlePieceCollected)
         {
-            Debug.Log("Walls coming down!");
             foreach (GameObject wall in challengeWalls)
             {
                 wall.GetComponent<MeshCollider>().enabled = false;
@@ -278,7 +272,6 @@ public class Challenge : MonoBehaviour
     {
         if (challengeWalls.Count > 0 && !challengeIsComplete)
         {
-            Debug.Log("Walls going up!");
             foreach (GameObject wall in challengeWalls)
             {
                 wall.GetComponent<MeshCollider>().enabled = true;

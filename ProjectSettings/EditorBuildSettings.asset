@@ -9,16 +9,19 @@ EditorBuildSettings:
     path: Assets/_Scenes/00_Init.unity
     guid: ae1e2f949b1fa1148ada8cc114f6b7ba
   - enabled: 1
-    path: Assets/_Scenes/01_Room_Cave.unity
+    path: Assets/_Scenes/01_Room_Tutorial01.unity
+    guid: 7290dd793f4d30a47832ecb2116c5f90
+  - enabled: 1
+    path: Assets/_Scenes/11_Room_Cave.unity
     guid: 75b201d8f6812c149976c3369139d2b3
   - enabled: 1
-    path: Assets/_Scenes/02_Room_Town.unity
+    path: Assets/_Scenes/12_Room_Town.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/_Scenes/03_Room_UpAndUpRecon.unity
+    path: Assets/_Scenes/13_Room_UpAndUpRecon.unity
     guid: 7ebf035547e6ff044b5d7d5f94f19095
   - enabled: 1
-    path: Assets/_Scenes/04_Room_SkyHigh.unity
+    path: Assets/_Scenes/14_Room_SkyHigh.unity
     guid: 25819129f30b3994081571417aa30ce6
   - enabled: 1
     path: Assets/_Scenes/99_GameOver.unity

@@ -12,12 +12,16 @@ public class PlayerController : StarterAssets.ThirdPersonController
     {
         Challenge.OnReducePlayerSpeed += ReducePlayerSpeed;
         Challenge.OnRestorePlayerSpeed += RestorePlayerSpeed;
+        HintTrigger.OnReducePlayerSpeed += ReducePlayerSpeed;
+        HintTrigger.OnRestorePlayerSpeed += RestorePlayerSpeed;
     }
 
     void OnDisable()
     {
         Challenge.OnReducePlayerSpeed -= ReducePlayerSpeed;
         Challenge.OnRestorePlayerSpeed -= RestorePlayerSpeed;
+        HintTrigger.OnReducePlayerSpeed -= ReducePlayerSpeed;
+        HintTrigger.OnRestorePlayerSpeed -= RestorePlayerSpeed;
     }
 
     void ReducePlayerSpeed()
