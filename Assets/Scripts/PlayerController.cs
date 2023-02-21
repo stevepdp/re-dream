@@ -7,9 +7,12 @@ public class PlayerController : StarterAssets.ThirdPersonController
     [SerializeField] float startingMoveSpeed;
     [SerializeField] float startingSprintSpeed;
     [SerializeField] float speedReduction;
+    [SerializeField] bool canJump;
 
     void OnEnable()
     {
+        Challenge.OnDisableJump += DisablePlayerJump;
+        Challenge.OnEnableJump += EnablePlayerJump;
         Challenge.OnReducePlayerSpeed += ReducePlayerSpeed;
         Challenge.OnRestorePlayerSpeed += RestorePlayerSpeed;
         HintTrigger.OnReducePlayerSpeed += ReducePlayerSpeed;
@@ -18,10 +21,28 @@ public class PlayerController : StarterAssets.ThirdPersonController
 
     void OnDisable()
     {
+        Challenge.OnDisableJump -= DisablePlayerJump;
+        Challenge.OnEnableJump -= EnablePlayerJump;
         Challenge.OnReducePlayerSpeed -= ReducePlayerSpeed;
         Challenge.OnRestorePlayerSpeed -= RestorePlayerSpeed;
         HintTrigger.OnReducePlayerSpeed -= ReducePlayerSpeed;
         HintTrigger.OnRestorePlayerSpeed -= RestorePlayerSpeed;
+    }
+
+    void DisablePlayerJump() => canJump = false;
+
+    void EnablePlayerJump() => canJump = true;
+
+    protected override void JumpAndGravity()
+    {
+        if (!canJump)
+        {
+            Grounded = true;
+        }
+        else
+        {
+            base.JumpAndGravity();
+        }
     }
 
     void ReducePlayerSpeed()

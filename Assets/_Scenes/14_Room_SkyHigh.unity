@@ -20598,7 +20598,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh116444
+  m_Name: pb_Mesh84730
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -35877,7 +35877,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9db289b92cbe2d54cbd98734bf82790b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  challengeType: 3
+  challengeType: 4
   lastSpawnPos: {x: 0, y: 0, z: 0}
   challengePuzzlePiece: {fileID: 1730696454}
   challengePuzzlePieceTarget: {fileID: 984346711}
@@ -35933,6 +35933,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 701605785, guid: 0018184709d0a22459ddb3ed8c1b4935, type: 3}
+      propertyPath: canJump
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4043693886624207829, guid: 0018184709d0a22459ddb3ed8c1b4935, type: 3}
       propertyPath: m_RootOrder
       value: 4

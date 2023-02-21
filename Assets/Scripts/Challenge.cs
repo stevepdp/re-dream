@@ -8,7 +8,7 @@ public enum ChallengeType
 {
     DefeatEnemiesNoTimer,
     EndlessEnemiesSurviveTimer,
-    //JumpDisabledSurviveTimer,
+    JumpDisabledSurviveTimer,
     SpeedReducedDefeatEnemiesNoTimer,
     WeaponDisabledSurviveTimer,
     //ContinuousEnemiesSpeedReducedSurviveTimer,
@@ -43,7 +43,9 @@ public class Challenge : MonoBehaviour
     [SerializeField] string challengeInstructions;
 
     public static event Action OnChallengeEnemyAutokill;
+    public static event Action OnDisableJump;
     public static event Action OnDisableProjectile;
+    public static event Action OnEnableJump;
     public static event Action OnEnableProjectile;
     public static event Action OnReducePlayerSpeed;
     public static event Action OnRestorePlayerSpeed;
@@ -188,12 +190,16 @@ public class Challenge : MonoBehaviour
                 StartDefeatEnemiesNoTimer();
                 return;
 
-            case ChallengeType.SpeedReducedDefeatEnemiesNoTimer:
-                StartSpeedReducedDefeatEnemiesNoTimer();
-                return;
-
             case ChallengeType.EndlessEnemiesSurviveTimer:
                 StartEndlessEnemiesSurviveTimer();
+                return;
+
+            case ChallengeType.JumpDisabledSurviveTimer:
+                StartJumpDisabledSurviveTimer();
+                return;
+
+            case ChallengeType.SpeedReducedDefeatEnemiesNoTimer:
+                StartSpeedReducedDefeatEnemiesNoTimer();
                 return;
 
             case ChallengeType.WeaponDisabledSurviveTimer:
@@ -211,17 +217,25 @@ public class Challenge : MonoBehaviour
         InvokeRepeating("SpawnEnemy", challengeEnemySpawnDelay, challengeEnemySpawnDelay);
     }
 
-    void StartEndlessEnemiesSurviveTimer()
+    void StartEndlessEnemiesSurviveTimer() => StartTimer();
+
+    void StartJumpDisabledSurviveTimer()
     {
-        challengeTimeRemaining = challengeLengthInSecs;
-        StartCoroutine(CountdownTimer());
-        InvokeRepeating("KeepSpawningEnemies", challengeEnemySpawnDelay, challengeEnemySpawnDelay);
+        OnDisableJump?.Invoke();
+        StartTimer();
     }
 
     void StartSpeedReducedDefeatEnemiesNoTimer()
     {
         OnReducePlayerSpeed?.Invoke();
         InvokeRepeating("SpawnEnemy", challengeEnemySpawnDelay, challengeEnemySpawnDelay);
+    }
+
+    void StartTimer()
+    {
+        challengeTimeRemaining = challengeLengthInSecs;
+        StartCoroutine(CountdownTimer());
+        InvokeRepeating("KeepSpawningEnemies", challengeEnemySpawnDelay, challengeEnemySpawnDelay);
     }
 
     void StartWeaponDisabledSurviveTimer()
@@ -240,6 +254,11 @@ public class Challenge : MonoBehaviour
         }
         else if (challengeType == ChallengeType.EndlessEnemiesSurviveTimer && challengeTimeRemaining <= 0)
         {
+            Invoke("EndChallenge", challengeEndDelay);
+        }
+        else if (challengeType == ChallengeType.JumpDisabledSurviveTimer && challengeTimeRemaining <= 0)
+        {
+            OnEnableJump?.Invoke();
             Invoke("EndChallenge", challengeEndDelay);
         }
         else if (challengeType == ChallengeType.SpeedReducedDefeatEnemiesNoTimer && challengeEnemiesDefeated >= challengeEnemiesToDefeat)

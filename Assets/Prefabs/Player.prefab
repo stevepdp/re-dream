@@ -5852,7 +5852,7 @@ MonoBehaviour:
     m_ActionId: e4ce1614-c754-48c1-9103-33130441661f
     m_ActionName: UI/New action
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Gamepad
+  m_DefaultControlScheme: KeyboardMouse
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -5868,6 +5868,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d592f37f5aeb4d4eab9404edb092cf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canFire: 1
+  playerHasMoved: 0
+  playerIdleHintShown: 0
   hp: 3
   fire:
     m_Name: Fire
@@ -5926,6 +5929,7 @@ MonoBehaviour:
   startingMoveSpeed: 0
   startingSprintSpeed: 0
   speedReduction: 1.5
+  canJump: 1
 --- !u!1 &3802325373911838831
 GameObject:
   m_ObjectHideFlags: 0

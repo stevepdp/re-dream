@@ -11474,14 +11474,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 715998889, guid: 0018184709d0a22459ddb3ed8c1b4935, type: 3}
-      propertyPath: canFire
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3699080951106095459, guid: 0018184709d0a22459ddb3ed8c1b4935, type: 3}
-      propertyPath: m_DefaultControlScheme
-      value: KeyboardMouse
-      objectReference: {fileID: 0}
     - target: {fileID: 3699080951106095471, guid: 0018184709d0a22459ddb3ed8c1b4935, type: 3}
       propertyPath: m_Name
       value: Player

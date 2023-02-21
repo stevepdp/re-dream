@@ -22854,6 +22854,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 701605785, guid: 0018184709d0a22459ddb3ed8c1b4935, type: 3}
+      propertyPath: canJump
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 992901131, guid: 0018184709d0a22459ddb3ed8c1b4935, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
