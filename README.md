@@ -5,22 +5,11 @@ A 3D platforming game with procedural generation elements.
 
 ## Dependencies To Install Via The Asset Store
 
-This project uses the following asset:
+This project uses the following assets:
 
-* [Starter Assets - Third Person Character Controller](https://assetstore.unity.com/packages/essentials/starter-assets-third-person-character-controller-196526) by Unity Technologies.
+* [Starter Assets - Third Person Character Controller](https://assetstore.unity.com/packages/essentials/starter-assets-third-person-character-controller-196526) by Unity Technologies. Note: The function `JumpAndGravity` on ThirdPersonController.cs has been modified slightly so as to be able to override it.
 
-For the project's Player prefab to work correctly, please license this asset and import it into the project. When prompted, install it's dependencies too. Once everything's installed, move the `StarterAssets` folder it generates to the following path:
-
-`Assets/_Imports/StarterAssets`  
-
-Next, on the Player prefab, under Player Input, change the Actions scriptable object from `StarterAssets` to our own `PlayerControls`. The file is located at `Assets/Scripts/StarterAssets/InputSystem/PlayerControls.inputsettings` and this will allow our custom controls to work.
-
-
-## Dependencies To Install Via Unity
-
-You will need to install TMP Essentials too via Window > Text Mesh Pro and click "Import TMP Essential Resources". With the "TextMesh Pro" folder it generates, place the folder here:
-
-`Assets/_Imports/TextMesh Pro`
+* TextMesh Pro by Unity Technologies
 
 
 ## Unity Registry & Other Git Dependencies
