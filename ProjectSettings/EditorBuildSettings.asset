@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/_Scenes/01_Room_Tutorial01.unity
     guid: 7290dd793f4d30a47832ecb2116c5f90
   - enabled: 1
-    path: Assets/_Scenes/01_Room_Tutorial02.unity
+    path: Assets/_Scenes/02_Room_Tutorial02.unity
     guid: 67337df70944ed149906523f5e8274f8
   - enabled: 1
     path: Assets/_Scenes/11_Room_Cave.unity
