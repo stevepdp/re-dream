@@ -12,11 +12,12 @@ GameObject:
   - component: {fileID: 9048828901512209029}
   - component: {fileID: 6518699569708832335}
   - component: {fileID: 5599811729390176969}
-  - component: {fileID: 2466371350611222262}
+  - component: {fileID: 1499991547505994580}
   - component: {fileID: 5599811729390176974}
+  - component: {fileID: 5287969756544339782}
   - component: {fileID: 5599811729390176963}
   m_Layer: 0
-  m_Name: PuzzlePiece
+  m_Name: PuzzlePieceChallenge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,7 +101,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.437928, y: 0.2155703, z: 1.07129}
   m_Center: {x: 0.0021330728, y: 0.01884347, z: -0.0029211044}
---- !u!114 &2466371350611222262
+--- !u!114 &1499991547505994580
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,6 +123,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cd85b0e446c8688449a5d42f12dfba50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5287969756544339782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4717501680396220314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 666ac06eaaccfd648b987cf5c587aa4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &5599811729390176963
