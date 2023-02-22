@@ -3,13 +3,15 @@
 A 3D platforming game with procedural generation elements.
 
 
-## Dependencies To Install Via The Asset Store
+## Assets
 
 This project uses the following assets:
 
 * [Starter Assets - Third Person Character Controller](https://assetstore.unity.com/packages/essentials/starter-assets-third-person-character-controller-196526) by Unity Technologies. Note: The function `JumpAndGravity` on ThirdPersonController.cs has been modified slightly so as to be able to override it.
 
-* TextMesh Pro by Unity Technologies
+* TextMesh Pro by Unity Technologies, installed via Unity editor.
+
+* "Jigsaw Piece" by [The Base Mesh](https://thebasemesh.com/)
 
 
 ## Unity Registry & Other Git Dependencies
