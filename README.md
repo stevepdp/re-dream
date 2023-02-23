@@ -11,7 +11,9 @@ This project uses the following assets:
 
 * TextMesh Pro by Unity Technologies, installed via Unity editor.
 
-* "Jigsaw Piece" by [The Base Mesh](https://thebasemesh.com/)
+* "Jigsaw Piece" by [The Base Mesh](https://thebasemesh.com/) is licensed CC0
+
+* "[Controller Style #1](https://opengameart.org/content/controller-style-1)" by uUMR is licensed [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/)
 
 
 ## Unity Registry & Other Git Dependencies
