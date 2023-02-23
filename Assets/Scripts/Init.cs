@@ -14,6 +14,7 @@ public class Init : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         CleanupObjects();
         LoadScene.LoadNextScene();
+        Time.timeScale = 1;
     }
     void OnApplicationFocus()
     {

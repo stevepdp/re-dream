@@ -17,12 +17,14 @@ public class Hint : MonoBehaviour
 
     void OnEnable()
     {
+        PauseMenu.OnPlayerPaused += HideHint;
         Player.OnPlayerIdle += ShowMovementHint;
         Player.OnPlayerInput += HideHint;
     }
 
     void OnDisable()
     {
+        PauseMenu.OnPlayerPaused -= HideHint;
         Player.OnPlayerIdle -= ShowMovementHint;
         Player.OnPlayerInput -= HideHint;
     }
