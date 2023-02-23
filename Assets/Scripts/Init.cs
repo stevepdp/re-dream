@@ -13,7 +13,7 @@ public class Init : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         CleanupObjects();
-        NextScene();
+        LoadScene.LoadNextScene();
     }
     void OnApplicationFocus()
     {
@@ -36,6 +36,4 @@ public class Init : MonoBehaviour
         Instantiate(gameManager);
         Instantiate(inputManager);
     }
-
-    void NextScene() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
 }
