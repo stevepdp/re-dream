@@ -6,7 +6,7 @@ public class LinkHandler : MonoBehaviour
 {
     void Start()
     {
-        GameManager.instance.ShowCursorConfined();
+        GameManager.instance?.ShowCursorConfined();
     }
 
     public void OpenURL(string url) => Application.OpenURL(url);
