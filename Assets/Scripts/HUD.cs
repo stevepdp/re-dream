@@ -11,8 +11,6 @@ public class HUD : MonoBehaviour
 
     void Start()
     {
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.Locked;
         SetCrystalCountText();
         SetPuzzlePieceCountText();
     }

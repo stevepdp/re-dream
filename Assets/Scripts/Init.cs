@@ -10,16 +10,9 @@ public class Init : MonoBehaviour
 
     void Start()
     {
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
         CleanupObjects();
         LoadScene.LoadNextScene();
         Time.timeScale = 1;
-    }
-    void OnApplicationFocus()
-    {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void CleanupObjects()

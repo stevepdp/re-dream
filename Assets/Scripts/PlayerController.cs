@@ -17,6 +17,8 @@ public class PlayerController : StarterAssets.ThirdPersonController
         Challenge.OnRestorePlayerSpeed += RestorePlayerSpeed;
         HintTrigger.OnReducePlayerSpeed += ReducePlayerSpeed;
         HintTrigger.OnRestorePlayerSpeed += RestorePlayerSpeed;
+        PauseMenu.OnPlayerPaused += LockCamera;
+        PauseMenu.OnPlayerResumed += FreeCamera;
     }
 
     void OnDisable()
@@ -27,6 +29,8 @@ public class PlayerController : StarterAssets.ThirdPersonController
         Challenge.OnRestorePlayerSpeed -= RestorePlayerSpeed;
         HintTrigger.OnReducePlayerSpeed -= ReducePlayerSpeed;
         HintTrigger.OnRestorePlayerSpeed -= RestorePlayerSpeed;
+        PauseMenu.OnPlayerPaused -= LockCamera;
+        PauseMenu.OnPlayerResumed -= FreeCamera;
     }
 
     void DisablePlayerJump() => canJump = false;
@@ -44,6 +48,10 @@ public class PlayerController : StarterAssets.ThirdPersonController
             base.JumpAndGravity();
         }
     }
+
+    void FreeCamera() => LockCameraPosition = false;
+
+    void LockCamera()=> LockCameraPosition = true;
 
     void ReducePlayerSpeed()
     {

@@ -37,10 +37,4 @@ public class Rotate : MonoBehaviour
     {
         transform.Rotate(0, rotateSpeed, 0, Space.World);
     }
-
-    
-
-    
-
-    
 }

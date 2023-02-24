@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
 
+    public static event Action OnGameLostFocus;
+    public static event Action OnGameRefocused;
     public static event Action OnPlayerCrystalCountUpdated;
     public static event Action OnPlayerPuzzlePiecesCountUpdated;
     public static event Action OnRoomRequirementsMet;
@@ -33,7 +35,7 @@ public class GameManager : MonoBehaviour
         set { playerPuzzlePiecesCount = value; }
     }
 
-    public int RoomCrystalsTotal 
+    public int RoomCrystalsTotal
     {
         get { return roomCrystalsTotal; }
         set { roomCrystalsTotal = value; }
@@ -49,6 +51,13 @@ public class GameManager : MonoBehaviour
     {
         EnforceSingleInstance();
         LevelSetup();
+        HideCursorLocked();
+    }
+
+    void OnApplicationFocus(bool hasFocus)
+    {
+        if (hasFocus) OnGameRefocused?.Invoke();
+        else OnGameLostFocus?.Invoke();
     }
 
     void OnEnable()
@@ -129,6 +138,30 @@ public class GameManager : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         LevelSetup();
+    }
+
+    public void HideCursorLocked()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void HideCursorConfined()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Confined;
+    }
+
+    public void ShowCursorConfined()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+    }
+
+    public void ShowCursorFree()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     void TestRoomRequirementsMet()

@@ -1,50 +1,91 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] GameObject canvasPause;
     [SerializeField] GameObject panelPause;
+    [SerializeField] InputAction pause;
+    [SerializeField] PlayerControls playerControls;
 
     public static event Action OnPlayerPaused;
     public static event Action OnPlayerResumed;
 
-    void Update()
+    void Awake()
     {
-        CheckInput();
+        playerControls = new PlayerControls();
     }
 
-    void CheckInput()
+    void OnEnable()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Return))
-        {
-            if (!panelPause.activeInHierarchy)
-                ShowPanel();
-        }
+        GameManager.OnGameLostFocus += ShowPanelLostFocus;
+        GameManager.OnGameRefocused += ShowCursor;
 
-        if (panelPause.activeInHierarchy)
-        {
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-        }
+        pause = playerControls.Player.Pause;
+        pause.Enable();
+        pause.performed += ShowPanel;
+    }
+
+    void OnDisable()
+    {
+        GameManager.OnGameLostFocus -= ShowPanelLostFocus;
+        GameManager.OnGameRefocused -= ShowCursor;
+
+        pause.Disable();
     }
 
     public void ClosePanel()
     {
         OnPlayerResumed?.Invoke();
 
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.None;
+        GameManager.instance.HideCursorLocked();
 
         Time.timeScale = 1;
         panelPause?.SetActive(false);
     }
 
-    void ShowPanel()
+    void Pause()
     {
         OnPlayerPaused?.Invoke();
-
         Time.timeScale = 0;
         panelPause?.SetActive(true);
+    }
+
+    void ShowCursor()
+    {
+        if (panelPause.activeInHierarchy)
+        {
+            // permits moving the game window when bringing it back into focus
+            GameManager.instance.ShowCursorFree();
+        }
+        else
+        {
+            // in gameplay, so lock cursor center and hide it
+            GameManager.instance.HideCursorLocked();
+        }
+            
+    }
+
+    void ShowPanel(InputAction.CallbackContext context)
+    {
+        if (!panelPause.activeInHierarchy)
+        {
+            GameManager.instance.ShowCursorConfined();
+            Pause();
+        }
+        else
+        {
+            ClosePanel();
+        }
+    }
+
+    void ShowPanelLostFocus()
+    {
+        if (!panelPause.activeInHierarchy)
+        {
+            GameManager.instance.ShowCursorFree();
+            Pause();
+        }
     }
 }

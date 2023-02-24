@@ -39,6 +39,7 @@ public class Player : MonoBehaviour
     {
         Challenge.OnDisableProjectile += DisableProjectile;
         Challenge.OnEnableProjectile += EnableProjectile;
+
         fire = playerControls.Player.Fire;
         fire.Enable();
         fire.performed += FireProjectile;

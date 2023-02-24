@@ -38,7 +38,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 67.325}
+  m_AnchoredPosition: {x: 0, y: 104}
   m_SizeDelta: {x: 224, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6219717623072476373
@@ -263,6 +263,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasPause: {fileID: 6219717623218991805}
   panelPause: {fileID: 6219717625055831183}
+  pause:
+    m_Name: Pause
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 18b02918-e1a1-418c-a27e-e9de28ef1e90
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &6219717623377856284
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,7 +307,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 64.86486}
+  m_AnchoredPosition: {x: 0, y: 100.67937}
   m_SizeDelta: {x: 647, y: 402}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6219717623377856283
@@ -512,7 +521,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 154.3815}
+  m_AnchoredPosition: {x: 0, y: 200}
   m_SizeDelta: {x: 224, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6219717624417524361
