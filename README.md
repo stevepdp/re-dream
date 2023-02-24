@@ -11,7 +11,7 @@ This project uses the following assets:
 
 * TextMesh Pro by Unity Technologies, installed via Unity editor.
 
-* [Jettelly Happy Day Skybox](https://www.jettelly.com/assets/happy-day-skybox/) by Jettelly is licensed [CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0/?ref=chooser-v1). No modifications were made.
+* [Jettelly Happy Day Skybox](https://www.jettelly.com/assets/happy-day-skybox/) by Jettelly is licensed [CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0/legalcode). No modifications were made.
 
 * "Jigsaw Piece" by [The Base Mesh](https://thebasemesh.com/) is licensed CC0
 
