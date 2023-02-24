@@ -76,6 +76,7 @@ crashlytics-build.properties
 
 # Third Party Assets
 Assets/_Imports/*
+!Assets/_Imports/Jettelly Assets*
 !Assets/_Imports/StarterAssets*
 !Assets/_Imports/TextMesh*
 !Assets/_Imports/.keep
