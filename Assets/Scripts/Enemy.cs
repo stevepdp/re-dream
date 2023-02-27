@@ -6,11 +6,8 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    public static event Action OnEnemyDead;
-
     [SerializeField] private bool hasChased;
     [SerializeField] private bool isChasing;
-    [SerializeField] private bool isIdle;
     [SerializeField] private int aggroDistance = 7;
     [SerializeField] private int giveUpDistance = 14;
     [SerializeField] private int hp = 1;
@@ -26,11 +23,11 @@ public class Enemy : MonoBehaviour
     }
 
     private Color startingColour;
-    private Renderer renderer;
+    private Renderer rend;
 
     void Awake()
     {
-        renderer = GetComponent<Renderer>();
+        rend = GetComponent<Renderer>();
 
         SetupEnemy();
         GetPlayerTransform();
@@ -59,7 +56,7 @@ public class Enemy : MonoBehaviour
                 // Start chasing
                 hasChased = true;
                 isChasing = true;
-                renderer.material.color = Color.red;
+                rend.material.color = Color.red;
                 agent.destination = player.transform.position;
             }
             else if (hasChased && isChasing && distanceFromStart < giveUpDistance)
@@ -72,12 +69,12 @@ public class Enemy : MonoBehaviour
                 // Give up
                 isChasing = false;
                 agent.destination = basePos;
-                renderer.material.color = Color.magenta;
+                rend.material.color = Color.magenta;
             }
             else if (hasChased && !isChasing && agent.velocity == Vector3.zero)
             {
                 // Back on guard
-                renderer.material.color = startingColour;
+                rend.material.color = startingColour;
                 hasChased = false;
             }
         }
@@ -96,7 +93,6 @@ public class Enemy : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.speed = moveSpeed;
         basePos = transform.position;
-        isIdle = true;
-        startingColour = renderer.material.color;
+        startingColour = rend.material.color;
     }
 }

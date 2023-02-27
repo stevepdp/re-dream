@@ -7,7 +7,6 @@ using UnityEngine.AI;
 public class EnemyChallenge : Enemy
 {
     public static event Action OnChallengeEnemyDefeated;
-    public static event Action OnChallengeEnemyAutoKill;
 
     void OnEnable() => Challenge.OnChallengeEnemyAutokill += AutoKill;
 
