@@ -21,7 +21,7 @@ public class HUD : MonoBehaviour
         GameManager.OnPlayerCrystalCountUpdated += SetCrystalCountText;
         GameManager.OnRoomPuzzlePiecesCounted += SetPuzzlePieceCountText;
         GameManager.OnPlayerPuzzlePiecesCountUpdated += SetPuzzlePieceCountText;
-        InputManager.OnPlayerToggleHUD += ToggleHUD;
+        Player.OnPlayerToggleHUD += ToggleHUD;
     }
 
     void OnDisable()
@@ -30,7 +30,7 @@ public class HUD : MonoBehaviour
         GameManager.OnPlayerCrystalCountUpdated -= SetCrystalCountText;
         GameManager.OnRoomPuzzlePiecesCounted -= SetPuzzlePieceCountText;
         GameManager.OnPlayerPuzzlePiecesCountUpdated -= SetPuzzlePieceCountText;
-        InputManager.OnPlayerToggleHUD -= ToggleHUD;
+        Player.OnPlayerToggleHUD -= ToggleHUD;
     }
 
     void SetCrystalCountText()

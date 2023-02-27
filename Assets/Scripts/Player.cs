@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,6 +10,7 @@ public class Player : MonoBehaviour
     public static event Action OnPlayerDead;
     public static event Action OnPlayerIdle;
     public static event Action OnPlayerInput;
+    public static event Action OnPlayerToggleHUD;
 
     [SerializeField] bool canFire;
     float idleCheckTime = 6f;
@@ -16,6 +18,8 @@ public class Player : MonoBehaviour
     [SerializeField] bool playerIdleHintShown;
     [SerializeField] int hp = 3;
     [SerializeField] InputAction fire;
+    [SerializeField] InputAction movement;
+    [SerializeField] InputAction toggleHUD;
     [SerializeField] ParticleSystem particleProjectile;
     [SerializeField] PlayerControls playerControls;
    
@@ -30,19 +34,22 @@ public class Player : MonoBehaviour
         Invoke("CheckIdle", idleCheckTime);
     }
 
-    void Update()
-    {
-        CheckNotIdle();
-    }
-
     void OnEnable()
     {
         Challenge.OnDisableProjectile += DisableProjectile;
         Challenge.OnEnableProjectile += EnableProjectile;
 
+        movement = playerControls.Player.Move;
+        movement.Enable();
+        movement.performed += CheckNotIdle;
+
         fire = playerControls.Player.Fire;
         fire.Enable();
         fire.performed += FireProjectile;
+
+        toggleHUD = playerControls.Player.ToggleHUD;
+        toggleHUD.Enable();
+        toggleHUD.performed += ToggleHUD;
     }
 
     void OnDisable()
@@ -69,15 +76,15 @@ public class Player : MonoBehaviour
         }
     }
 
-    void CheckNotIdle()
+    void CheckNotIdle(InputAction.CallbackContext ctx)
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
+        Vector2 moveAxis = ctx.ReadValue<Vector2>();
 
-        if (!playerHasMoved && Input.anyKeyDown || !playerHasMoved && horizontalInput != 0f || !playerHasMoved && verticalInput != 0f)
+        if (!playerHasMoved && Input.anyKeyDown || !playerHasMoved && moveAxis.x != 0f || !playerHasMoved && moveAxis.y != 0f)
         {
             playerHasMoved = true;
             OnPlayerInput?.Invoke();
+            movement.Disable();
         }
     }
 
@@ -97,4 +104,6 @@ public class Player : MonoBehaviour
             particleProjectile.Play();
         }
     }
+
+    void ToggleHUD(InputAction.CallbackContext context) => OnPlayerToggleHUD?.Invoke();
 }

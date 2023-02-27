@@ -98,6 +98,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ToggleHUD"",
+                    ""type"": ""Button"",
+                    ""id"": ""1c6d54e7-3b4a-4a99-ab1c-7ee28a2d4d93"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -419,6 +428,28 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Cancel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e0ee60f8-c8dc-4258-880d-7d7dad4685ad"",
+                    ""path"": ""<Keyboard>/h"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""ToggleHUD"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""40c1ebf6-7588-4a6a-8a25-e6f94c89520a"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""ToggleHUD"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -483,6 +514,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_Accept = m_Player.FindAction("Accept", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         m_Player_Cancel = m_Player.FindAction("Cancel", throwIfNotFound: true);
+        m_Player_ToggleHUD = m_Player.FindAction("ToggleHUD", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -550,6 +582,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Accept;
     private readonly InputAction m_Player_Pause;
     private readonly InputAction m_Player_Cancel;
+    private readonly InputAction m_Player_ToggleHUD;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -562,6 +595,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Accept => m_Wrapper.m_Player_Accept;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputAction @Cancel => m_Wrapper.m_Player_Cancel;
+        public InputAction @ToggleHUD => m_Wrapper.m_Player_ToggleHUD;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -595,6 +629,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Cancel.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCancel;
                 @Cancel.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCancel;
                 @Cancel.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCancel;
+                @ToggleHUD.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleHUD;
+                @ToggleHUD.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleHUD;
+                @ToggleHUD.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleHUD;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -623,6 +660,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Cancel.started += instance.OnCancel;
                 @Cancel.performed += instance.OnCancel;
                 @Cancel.canceled += instance.OnCancel;
+                @ToggleHUD.started += instance.OnToggleHUD;
+                @ToggleHUD.performed += instance.OnToggleHUD;
+                @ToggleHUD.canceled += instance.OnToggleHUD;
             }
         }
     }
@@ -673,5 +713,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnAccept(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnCancel(InputAction.CallbackContext context);
+        void OnToggleHUD(InputAction.CallbackContext context);
     }
 }
