@@ -20,6 +20,7 @@ public class Challenge : MonoBehaviour
     [SerializeField] ChallengeType challengeType;
     [SerializeField] Vector3 lastSpawnPos;
 
+    [SerializeField] Transform player;
     [SerializeField] Transform challengePuzzlePiece;
     [SerializeField] Transform challengePuzzlePieceTarget;
     [SerializeField] List<GameObject> challengeSpawnPoints;
@@ -40,6 +41,7 @@ public class Challenge : MonoBehaviour
     int challengeTimeRemaining;
     [SerializeField] int challengeEnemiesDefeated;
     [SerializeField] int challengeEnemiesToDefeat;
+    [SerializeField] int minimumSpawnDistance = 5;
     [SerializeField] string challengeInstructions;
 
     public static event Action OnChallengeEnemyAutokill;
@@ -143,8 +145,11 @@ public class Challenge : MonoBehaviour
         {
             int spawnPosChoice = UnityEngine.Random.Range(0, challengeSpawnPoints.Count);
             int enemyToSpawn = UnityEngine.Random.Range(0, enemyPrefabsToSpawn.Count);
+            Vector3 playerPos = player.transform.position;
+            Vector3 proposedSpawnPoint = challengeSpawnPoints[spawnPosChoice].GetComponent<Transform>().position;
+            float distanceFromPlayer = Vector3.Distance(proposedSpawnPoint, playerPos);
 
-            if (challengeSpawnPoints[spawnPosChoice].GetComponent<Transform>().position == lastSpawnPos)
+            if (proposedSpawnPoint == lastSpawnPos || distanceFromPlayer <= minimumSpawnDistance)
                 continue;
 
             Instantiate(enemyPrefabsToSpawn[enemyToSpawn], challengeSpawnPoints[spawnPosChoice].transform.position, Quaternion.identity);
@@ -162,10 +167,14 @@ public class Challenge : MonoBehaviour
         {
             int spawnPosChoice = UnityEngine.Random.Range(0, challengeSpawnPoints.Count);
             int enemyToSpawn = UnityEngine.Random.Range(0, enemyPrefabsToSpawn.Count);
+            Vector3 playerPos = player.transform.position;
+            Vector3 proposedSpawnPoint = challengeSpawnPoints[spawnPosChoice].GetComponent<Transform>().position;
+            float distanceFromPlayer = Vector3.Distance(proposedSpawnPoint, playerPos);
 
-            if (challengeSpawnPoints[spawnPosChoice].GetComponent<Transform>().position == lastSpawnPos)
+            if (proposedSpawnPoint == lastSpawnPos || distanceFromPlayer <= minimumSpawnDistance)
             {
-                // prefering not to instantiate in the same position, so loop over again
+                // prefering not to instantiate in the same position
+                // or spawning too close to the player, so loop over again
                 continue;
             }
 

@@ -2048,6 +2048,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &569867324 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4043693886624207829, guid: 0018184709d0a22459ddb3ed8c1b4935, type: 3}
+  m_PrefabInstance: {fileID: 5920738432286534656}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &617327554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2062,6 +2067,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   challengeType: 1
   lastSpawnPos: {x: 0, y: 0, z: 0}
+  player: {fileID: 569867324}
   challengePuzzlePiece: {fileID: 1644069253}
   challengePuzzlePieceTarget: {fileID: 1522382183}
   challengeSpawnPoints:
@@ -2079,13 +2085,14 @@ MonoBehaviour:
   - {fileID: 8407421756549167713, guid: 1ba8a2278c8173a48b2341d26f59dfe5, type: 3}
   challengeInstructionsText: {fileID: 753932882}
   challengeShowStats: 1
-  useDeveloperTime: 1
+  useDeveloperTime: 0
   challengeEnemySpawnDelay: 1
   challengeEndDelay: 0
   challengeStartDelay: 2
-  challengeLengthInSecs: 30
+  challengeLengthInSecs: 60
   challengeEnemiesDefeated: 0
   challengeEnemiesToDefeat: 0
+  minimumSpawnDistance: 5
   challengeInstructions: 
 --- !u!65 &617327555
 BoxCollider:
@@ -3311,7 +3318,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh48544
+  m_Name: pb_Mesh102216
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

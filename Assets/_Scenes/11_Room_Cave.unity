@@ -1307,6 +1307,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dee0fe7253b980047a69fdd8ed348817, type: 3}
+--- !u!4 &53286705 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4043693886624207829, guid: 0018184709d0a22459ddb3ed8c1b4935, type: 3}
+  m_PrefabInstance: {fileID: 1016076667332903919}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &72434028 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1947583632814772020, guid: 5e9f8b38933722f4c84a67b5302d5323, type: 3}
@@ -1631,6 +1636,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   challengeType: 0
   lastSpawnPos: {x: 0, y: 0, z: 0}
+  player: {fileID: 53286705}
   challengePuzzlePiece: {fileID: 4912028}
   challengePuzzlePieceTarget: {fileID: 1627122031}
   challengeSpawnPoints:
@@ -1652,6 +1658,7 @@ MonoBehaviour:
   challengeLengthInSecs: 0
   challengeEnemiesDefeated: 0
   challengeEnemiesToDefeat: 3
+  minimumSpawnDistance: 5
   challengeInstructions: Defeat 3 Enemies!
 --- !u!65 &77465047
 BoxCollider:
@@ -13573,7 +13580,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh108368
+  m_Name: pb_Mesh125434
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
