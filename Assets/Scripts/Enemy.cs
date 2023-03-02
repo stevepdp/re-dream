@@ -25,6 +25,16 @@ public class Enemy : MonoBehaviour
     private Color startingColour;
     private Renderer rend;
 
+    void OnEnable()
+    {
+        GameManager.OnRoomRequirementsMet += AutoKill;
+    }
+
+    void OnDisable()
+    {
+        GameManager.OnRoomRequirementsMet -= AutoKill;
+    }
+
     void Awake()
     {
         rend = GetComponent<Renderer>();
@@ -42,6 +52,8 @@ public class Enemy : MonoBehaviour
     {
         DeductHP();
     }
+
+    void AutoKill() => Destroy(gameObject);
 
     void ChasePlayer()
     {
