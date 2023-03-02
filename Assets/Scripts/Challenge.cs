@@ -42,7 +42,6 @@ public class Challenge : MonoBehaviour
     [SerializeField] int challengeEnemiesDefeated;
     [SerializeField] int challengeEnemiesToDefeat;
     [SerializeField] int minimumSpawnDistance = 5;
-    [SerializeField] string challengeInstructions;
 
     public static event Action OnChallengeEnemyAutokill;
     public static event Action OnDisableJump;
@@ -81,10 +80,22 @@ public class Challenge : MonoBehaviour
 #endif
         while (challengeTimeRemaining > 0)
         {
-            challengeInstructionsText.text = string.Format("Survive: {0}", challengeTimeRemaining);
+            challengeInstructionsText.text = string.Format("Survive: {0} seconds", challengeTimeRemaining);
+
+            if (challengeType == ChallengeType.WeaponDisabledSurviveTimer)
+            {
+                challengeInstructionsText.text += "<br><size=50%>(weapon disabled)</size>";
+            }
+            else if (challengeType == ChallengeType.JumpDisabledSurviveTimer)
+            {
+                challengeInstructionsText.text += "<br><size=50%>(jump disabled)</size>";
+            }
+
             challengeTimeRemaining -= 1;
-            TestChallengeConditionsMet();
+
             yield return new WaitForSeconds(1f);
+
+            TestChallengeConditionsMet();
         }
 
         EndChallenge();
@@ -135,7 +146,10 @@ public class Challenge : MonoBehaviour
 
     void SetChallengeText() 
     {
-        challengeInstructionsText.text = challengeInstructions;
+        if (challengeType == ChallengeType.DefeatEnemiesNoTimer || challengeType == ChallengeType.SpeedReducedDefeatEnemiesNoTimer)
+        {
+            challengeInstructionsText.text = String.Format("Defeat {0} enemies", challengeEnemiesToDefeat);
+        }
         challengeInstructionsText.GetComponent<MeshRenderer>().enabled = true;
     }
 

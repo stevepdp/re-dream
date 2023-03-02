@@ -2085,11 +2085,11 @@ MonoBehaviour:
   - {fileID: 8407421756549167713, guid: 1ba8a2278c8173a48b2341d26f59dfe5, type: 3}
   challengeInstructionsText: {fileID: 753932882}
   challengeShowStats: 1
-  useDeveloperTime: 0
+  useDeveloperTime: 1
   challengeEnemySpawnDelay: 1
   challengeEndDelay: 0
   challengeStartDelay: 2
-  challengeLengthInSecs: 60
+  challengeLengthInSecs: 30
   challengeEnemiesDefeated: 0
   challengeEnemiesToDefeat: 0
   minimumSpawnDistance: 5
@@ -3318,7 +3318,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh102216
+  m_Name: pb_Mesh197214
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

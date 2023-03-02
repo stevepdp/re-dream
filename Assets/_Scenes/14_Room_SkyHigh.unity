@@ -20579,7 +20579,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh134648
+  m_Name: pb_Mesh205840
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -35536,7 +35536,7 @@ MonoBehaviour:
   - {fileID: 7504717306810828351, guid: f8813f4f61440a24583aa6197fc5bc09, type: 3}
   challengeInstructionsText: {fileID: 839007396}
   challengeShowStats: 0
-  useDeveloperTime: 0
+  useDeveloperTime: 1
   challengeEnemySpawnDelay: 1
   challengeEndDelay: 0
   challengeStartDelay: 3
