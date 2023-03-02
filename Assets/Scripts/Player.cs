@@ -39,15 +39,15 @@ public class Player : MonoBehaviour
         Challenge.OnEnableProjectile += EnableProjectile;
 
         movement = playerControls.Player.Move;
-        movement.Enable();
+        movement?.Enable();
         movement.performed += CheckNotIdle;
 
         fire = playerControls.Player.Fire;
-        fire.Enable();
+        fire?.Enable();
         fire.performed += FireProjectile;
 
         toggleHUD = playerControls.Player.ToggleHUD;
-        toggleHUD.Enable();
+        toggleHUD?.Enable();
         toggleHUD.performed += ToggleHUD;
     }
 
@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
     {
         Challenge.OnDisableProjectile -= DisableProjectile;
         Challenge.OnEnableProjectile -= EnableProjectile;
-        fire.Disable();
+        fire?.Disable();
     }
 
     void OnControllerColliderHit(ControllerColliderHit hit)
@@ -83,7 +83,7 @@ public class Player : MonoBehaviour
         {
             playerHasMoved = true;
             OnPlayerInput?.Invoke();
-            movement.Disable();
+            movement?.Disable();
         }
     }
 
@@ -100,7 +100,7 @@ public class Player : MonoBehaviour
     void FireProjectile(InputAction.CallbackContext context)
     {
         if (canFire) {
-            particleProjectile.Play();
+            particleProjectile?.Play();
         }
     }
 

@@ -39,7 +39,7 @@ public class PauseMenu : MonoBehaviour
     {
         OnPlayerResumed?.Invoke();
 
-        GameManager.instance.HideCursorLocked();
+        GameManager.instance?.HideCursorLocked();
 
         Time.timeScale = 1;
         panelPause?.SetActive(false);
@@ -57,12 +57,12 @@ public class PauseMenu : MonoBehaviour
         if (panelPause.activeInHierarchy)
         {
             // permits moving the game window when bringing it back into focus
-            GameManager.instance.ShowCursorFree();
+            GameManager.instance?.ShowCursorFree();
         }
         else
         {
             // in gameplay, so lock cursor center and hide it
-            GameManager.instance.HideCursorLocked();
+            GameManager.instance?.HideCursorLocked();
         }
             
     }
@@ -71,7 +71,7 @@ public class PauseMenu : MonoBehaviour
     {
         if (!panelPause.activeInHierarchy)
         {
-            GameManager.instance.ShowCursorConfined();
+            GameManager.instance?.ShowCursorConfined();
             Pause();
         }
         else
@@ -84,7 +84,7 @@ public class PauseMenu : MonoBehaviour
     {
         if (!panelPause.activeInHierarchy)
         {
-            GameManager.instance.ShowCursorFree();
+            GameManager.instance?.ShowCursorFree();
             Pause();
         }
     }

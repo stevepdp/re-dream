@@ -33,7 +33,13 @@ public class ExitText : MonoBehaviour
 
     void SetDefaultExitText() => roomRequirementsText.text = "Exit";
 
-    void SetExitRequirementsText() => roomRequirementsText.text = "Puzzle Pieces Remaining: " + Mathf.Abs(GameManager.instance.PlayerPuzzlePiecesCount - GameManager.instance.RoomPuzzlePiecesTotal);
+    void SetExitRequirementsText()
+    {
+        if (GameManager.instance != null)
+        {
+            roomRequirementsText.text = "Puzzle Pieces Remaining: " + Mathf.Abs(GameManager.instance.PlayerPuzzlePiecesCount - GameManager.instance.RoomPuzzlePiecesTotal);
+        }
+    }
 
     void SetRoomCompletionText() => roomRequirementsText.text = "Dream Solved!";
 }
