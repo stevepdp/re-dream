@@ -9,19 +9,37 @@ public class Player : MonoBehaviour
     public static event Action OnPlayerDead;
     public static event Action OnPlayerIdle;
     public static event Action OnPlayerInput;
+    public static event Action OnPlayerProjectileBurnout;
+    public static event Action OnPlayerProjectileReady;
     public static event Action OnPlayerToggleHUD;
 
     [SerializeField] bool canFire;
     float idleCheckTime = 6f;
     [SerializeField] bool playerHasMoved;
     [SerializeField] bool playerIdleHintShown;
+    [SerializeField] bool fireBurnedOut;
+    [SerializeField] int fireCooldownMin = 0;
+    [SerializeField] int fireCooldownStep = 1;
+    [SerializeField] int fireCooldownMax = 5;
+    [SerializeField] int fireCooldownTime;
     [SerializeField] int hp = 3;
     [SerializeField] InputAction fire;
     [SerializeField] InputAction movement;
     [SerializeField] InputAction toggleHUD;
     [SerializeField] ParticleSystem particleProjectile;
     [SerializeField] PlayerControls playerControls;
-   
+
+    public bool FireBurnedOut
+    {
+        get { return fireBurnedOut; }
+    }
+
+    public int FireCooldownTime
+    {
+        get { return fireCooldownTime; }
+        set { fireCooldownTime = value; }
+    }
+
     void Awake()
     {
         canFire = true;
@@ -31,6 +49,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         Invoke("CheckIdle", idleCheckTime);
+        InvokeRepeating("FireCooldown", fireCooldownStep, fireCooldownStep);
     }
 
     void OnEnable()
@@ -95,12 +114,51 @@ public class Player : MonoBehaviour
 
     void DisableProjectile() => canFire = false;
 
-    void EnableProjectile() => canFire = true;
+    void EnableProjectile()
+    {
+        canFire = true;
+    }
+
+    void ResetProjectile()
+    {
+        canFire = true;
+        OnPlayerProjectileReady?.Invoke();
+    }
+
+    void FireCooldown()
+    {
+        if (fireCooldownTime > fireCooldownMin)
+            fireCooldownTime--;
+
+        if (fireCooldownTime >= fireCooldownMax)
+        {
+            DisableProjectile();
+        }
+        else if (fireCooldownTime == fireCooldownMin && fireBurnedOut && !canFire)
+        {
+            ResetProjectile();
+        }
+
+        if (fireCooldownTime == fireCooldownMin && fireBurnedOut)
+        {
+            fireBurnedOut = false;
+            EnableProjectile();
+        }
+    }
 
     void FireProjectile(InputAction.CallbackContext context)
     {
-        if (canFire) {
+        if (fireCooldownTime < fireCooldownMax && canFire && !fireBurnedOut)
+        {
+            fireCooldownTime++;
             particleProjectile?.Play();
+        }
+
+        if (fireCooldownTime >= fireCooldownMax && !fireBurnedOut)
+        {
+            fireBurnedOut = true;
+            OnPlayerProjectileBurnout?.Invoke();
+            DisableProjectile();
         }
     }
 
