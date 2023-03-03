@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 
 public class HUD : MonoBehaviour
 {
@@ -10,11 +13,19 @@ public class HUD : MonoBehaviour
     [SerializeField] TMP_Text hudCrystalCountText;
     [SerializeField] TMP_Text hudPuzzlePieceCountText;
     [SerializeField] TMP_Text hudProjectileStatusText;
+    [SerializeField] Slider hudBurnoutSlider;
+    [SerializeField] Image hudBurnoutFillImage;
+    [SerializeField] Color hudBurnoutColourLocked;
+    [SerializeField] Color hudBurnoutColourNormal;
 
     void Start()
     {
         SetCrystalCountText();
         SetPuzzlePieceCountText();
+
+        hudBurnoutFillImage = hudBurnoutSlider.fillRect.GetComponent<Image>();
+        hudBurnoutSlider.minValue = (float) player?.FireCooldownMin;
+        hudBurnoutSlider.maxValue = (float) player?.FireCooldownMax;
     }
 
     void Update()
@@ -57,15 +68,20 @@ public class HUD : MonoBehaviour
 
     void SetProjectileReady()
     {
-        hudProjectileStatusText.text = player?.FireCooldownTime.ToString();
+        hudProjectileStatusText.text = "";
+        SetProjectileText();
+        if ((float) player?.FireCooldownTime == 0)
+            hudBurnoutFillImage.enabled = false;
     }
 
     void SetProjectileText()
     {
         if (player != null)
         {
-            if ((bool)!player?.FireBurnedOut)
-                hudProjectileStatusText.text = player?.FireCooldownTime.ToString();
+            float cooldownTime = (float) player.FireCooldownTime;
+            hudBurnoutFillImage.enabled = true;
+            hudBurnoutSlider.value = cooldownTime;
+            if (cooldownTime == 0) hudBurnoutFillImage.enabled = false;
         }
     }
 

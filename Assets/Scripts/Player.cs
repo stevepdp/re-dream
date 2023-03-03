@@ -34,6 +34,16 @@ public class Player : MonoBehaviour
         get { return fireBurnedOut; }
     }
 
+    public int FireCooldownMin
+    {
+        get { return fireCooldownMin; }
+    }
+
+    public int FireCooldownMax
+    {
+        get { return fireCooldownMax; }
+    }
+
     public int FireCooldownTime
     {
         get { return fireCooldownTime; }
@@ -148,7 +158,7 @@ public class Player : MonoBehaviour
 
     void FireProjectile(InputAction.CallbackContext context)
     {
-        if (fireCooldownTime < fireCooldownMax && canFire && !fireBurnedOut)
+        if (fireCooldownTime <= fireCooldownMax && canFire && !fireBurnedOut)
         {
             fireCooldownTime++;
             particleProjectile?.Play();
