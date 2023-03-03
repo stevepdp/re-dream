@@ -149,6 +149,11 @@ public class Challenge : MonoBehaviour
         if (challengeType == ChallengeType.DefeatEnemiesNoTimer || challengeType == ChallengeType.SpeedReducedDefeatEnemiesNoTimer)
         {
             challengeInstructionsText.text = String.Format("Defeat {0} enemies", challengeEnemiesToDefeat);
+
+            if (challengeType == ChallengeType.SpeedReducedDefeatEnemiesNoTimer)
+            {
+                challengeInstructionsText.text += "<br><size=50%>(speed reduced)</size>";
+            }
         }
         challengeInstructionsText.GetComponent<MeshRenderer>().enabled = true;
     }
