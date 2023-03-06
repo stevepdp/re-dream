@@ -3960,7 +3960,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-116902
+  m_Name: pb_Mesh-5722
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -8366,6 +8366,10 @@ PrefabInstance:
     - target: {fileID: 5576061223962470020, guid: 1ed8f222ed172ff43adbfe99843740ed, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6943571999159307650, guid: 1ed8f222ed172ff43adbfe99843740ed, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 6943571999481260067, guid: 1ed8f222ed172ff43adbfe99843740ed, type: 3}
       propertyPath: m_Pivot.x
@@ -16873,7 +16877,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1016076666672901788, guid: 0018184709d0a22459ddb3ed8c1b4935, type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 2147483647
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 3699080951106095459, guid: 0018184709d0a22459ddb3ed8c1b4935, type: 3}
       propertyPath: m_DefaultControlScheme
