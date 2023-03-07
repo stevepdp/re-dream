@@ -35,6 +35,8 @@ public class HUD : MonoBehaviour
 
     void OnEnable()
     {
+        Challenge.OnDisableProjectile += SetProjectileBurnedOut;
+        Challenge.OnEnableProjectile += SetProjectileReady;
         GameManager.OnRoomCrystalsCounted += SetCrystalCountText;
         GameManager.OnPlayerCrystalCountUpdated += SetCrystalCountText;
         GameManager.OnRoomPuzzlePiecesCounted += SetPuzzlePieceCountText;
@@ -46,6 +48,8 @@ public class HUD : MonoBehaviour
 
     void OnDisable()
     {
+        Challenge.OnDisableProjectile -= SetProjectileBurnedOut;
+        Challenge.OnEnableProjectile -= SetProjectileReady;
         GameManager.OnRoomCrystalsCounted -= SetCrystalCountText;
         GameManager.OnPlayerCrystalCountUpdated -= SetCrystalCountText;
         GameManager.OnRoomPuzzlePiecesCounted -= SetPuzzlePieceCountText;
