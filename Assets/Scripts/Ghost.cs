@@ -49,5 +49,11 @@ public class Ghost : MonoBehaviour
         StartCoroutine(Hide());
     }
 
-    void OnTriggerEnter(Collider other) => StartCoroutine(Warn());
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            StartCoroutine(Warn());
+        }
+    }
 }
