@@ -5869,7 +5869,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh228430
+  m_Name: pb_Mesh850530
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -17478,7 +17478,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh141296
+  m_Name: pb_Mesh850866
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -18496,6 +18496,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PuzzlePieceChallenge
       objectReference: {fileID: 0}
+    - target: {fileID: 5287969756544339782, guid: 4f0584712c8191f419cb0e75d20b4ef8, type: 3}
+      propertyPath: challenge
+      value: 
+      objectReference: {fileID: 5141842160724257224}
     - target: {fileID: 5349219057531055392, guid: 4f0584712c8191f419cb0e75d20b4ef8, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -19473,7 +19477,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh141152
+  m_Name: pb_Mesh850722
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -20955,7 +20959,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh228570
+  m_Name: pb_Mesh850660
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -34950,15 +34954,21 @@ MonoBehaviour:
   - {fileID: 8407421756549167713, guid: 1ba8a2278c8173a48b2341d26f59dfe5, type: 3}
   - {fileID: 7504717306810828351, guid: f8813f4f61440a24583aa6197fc5bc09, type: 3}
   challengeInstructionsText: {fileID: 839007396}
+  challengeIsOngoing: 0
+  challengeIsComplete: 0
+  challengePuzzlePieceReleased: 0
+  challengePuzzlePieceCollected: 0
   challengeShowStats: 0
   useDeveloperTime: 1
   challengeEnemySpawnDelay: 1
   challengeEndDelay: 0
   challengeStartDelay: 3
   challengeLengthInSecs: 30
+  challengeTimeRemaining: 0
   challengeEnemiesDefeated: 0
   challengeEnemiesToDefeat: 0
   minimumSpawnDistance: 5
+  enemiesReleased: 0
 --- !u!65 &5141842160724257225
 BoxCollider:
   m_ObjectHideFlags: 0

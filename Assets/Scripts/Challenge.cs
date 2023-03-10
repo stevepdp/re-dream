@@ -28,20 +28,21 @@ public class Challenge : MonoBehaviour
     [SerializeField] List<GameObject> enemyPrefabsToSpawn;
     [SerializeField] TMP_Text challengeInstructionsText;
 
-    bool challengeIsOngoing;
-    bool challengeIsComplete;
-    bool challengePuzzlePieceReleased;
-    bool challengePuzzlePieceCollected;
+    [SerializeField] bool challengeIsOngoing;
+    [SerializeField] bool challengeIsComplete;
+    [SerializeField] bool challengePuzzlePieceReleased;
+    [SerializeField] bool challengePuzzlePieceCollected;
     [SerializeField] bool challengeShowStats;
     [SerializeField] bool useDeveloperTime;
     [SerializeField] float challengeEnemySpawnDelay;
     [SerializeField] float challengeEndDelay;
     [SerializeField] float challengeStartDelay;
     [SerializeField] int challengeLengthInSecs;
-    int challengeTimeRemaining;
+    [SerializeField] int challengeTimeRemaining;
     [SerializeField] int challengeEnemiesDefeated;
     [SerializeField] int challengeEnemiesToDefeat;
     [SerializeField] int minimumSpawnDistance = 5;
+    [SerializeField] int enemiesReleased;
 
     public static event Action OnChallengeEnemyAutokill;
     public static event Action OnDisableJump;
@@ -51,18 +52,14 @@ public class Challenge : MonoBehaviour
     public static event Action OnReducePlayerSpeed;
     public static event Action OnRestorePlayerSpeed;
 
-    int enemiesReleased;
-
     void OnEnable()
     {
         EnemyChallenge.OnChallengeEnemyDefeated += IncrementKillCount;
-        PuzzlePieceForChallenges.OnChallengePuzzlePieceCollected += SetChallengePuzzlePieceCollected;
     }
 
     void OnDisable()
     {
         EnemyChallenge.OnChallengeEnemyDefeated -= IncrementKillCount;
-        PuzzlePieceForChallenges.OnChallengePuzzlePieceCollected -= SetChallengePuzzlePieceCollected;
     }
 
     void OnTriggerEnter(Collider other)
@@ -76,7 +73,7 @@ public class Challenge : MonoBehaviour
     IEnumerator CountdownTimer()
     {
 #if UNITY_EDITOR
-        if (useDeveloperTime) challengeTimeRemaining = 10;
+        if (useDeveloperTime) challengeTimeRemaining = 3;
 #endif
         while (challengeTimeRemaining > 0)
         {
@@ -138,7 +135,7 @@ public class Challenge : MonoBehaviour
         challengeInstructionsText.GetComponent<MeshRenderer>().enabled = false;
     }
 
-    void SetChallengePuzzlePieceCollected()
+    public void SetChallengePuzzlePieceCollected()
     {
         challengePuzzlePieceCollected = true;
         WallsDown();

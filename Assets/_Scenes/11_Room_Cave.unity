@@ -430,6 +430,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PuzzlePieceChallenge
       objectReference: {fileID: 0}
+    - target: {fileID: 5287969756544339782, guid: 4f0584712c8191f419cb0e75d20b4ef8, type: 3}
+      propertyPath: challenge
+      value: 
+      objectReference: {fileID: 77465046}
     - target: {fileID: 5349219057531055392, guid: 4f0584712c8191f419cb0e75d20b4ef8, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1645,15 +1649,21 @@ MonoBehaviour:
   enemyPrefabsToSpawn:
   - {fileID: 7504717306810828351, guid: f8813f4f61440a24583aa6197fc5bc09, type: 3}
   challengeInstructionsText: {fileID: 1779297352}
+  challengeIsOngoing: 0
+  challengeIsComplete: 0
+  challengePuzzlePieceReleased: 0
+  challengePuzzlePieceCollected: 0
   challengeShowStats: 0
   useDeveloperTime: 0
   challengeEnemySpawnDelay: 2
   challengeEndDelay: 0
   challengeStartDelay: 1.5
   challengeLengthInSecs: 0
+  challengeTimeRemaining: 0
   challengeEnemiesDefeated: 0
   challengeEnemiesToDefeat: 3
   minimumSpawnDistance: 5
+  enemiesReleased: 0
 --- !u!65 &77465047
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13619,7 +13629,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh214238
+  m_Name: pb_Mesh841650
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

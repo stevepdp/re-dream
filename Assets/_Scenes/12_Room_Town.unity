@@ -1051,7 +1051,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh154518
+  m_Name: pb_Mesh847058
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1479,7 +1479,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh154918
+  m_Name: pb_Mesh847268
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2079,15 +2079,21 @@ MonoBehaviour:
   - {fileID: 7504717306810828351, guid: f8813f4f61440a24583aa6197fc5bc09, type: 3}
   - {fileID: 8407421756549167713, guid: 1ba8a2278c8173a48b2341d26f59dfe5, type: 3}
   challengeInstructionsText: {fileID: 753932882}
+  challengeIsOngoing: 0
+  challengeIsComplete: 0
+  challengePuzzlePieceReleased: 0
+  challengePuzzlePieceCollected: 0
   challengeShowStats: 1
   useDeveloperTime: 1
   challengeEnemySpawnDelay: 1
   challengeEndDelay: 0
   challengeStartDelay: 2
   challengeLengthInSecs: 30
+  challengeTimeRemaining: 0
   challengeEnemiesDefeated: 0
   challengeEnemiesToDefeat: 0
   minimumSpawnDistance: 5
+  enemiesReleased: 0
 --- !u!65 &617327555
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3373,7 +3379,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh208278
+  m_Name: pb_Mesh847258
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4757,7 +4763,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh154934
+  m_Name: pb_Mesh847284
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5382,6 +5388,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PuzzlePieceChallenge
       objectReference: {fileID: 0}
+    - target: {fileID: 5287969756544339782, guid: 4f0584712c8191f419cb0e75d20b4ef8, type: 3}
+      propertyPath: challenge
+      value: 
+      objectReference: {fileID: 617327554}
     - target: {fileID: 5349219057531055392, guid: 4f0584712c8191f419cb0e75d20b4ef8, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -6485,7 +6495,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh154494
+  m_Name: pb_Mesh847034
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

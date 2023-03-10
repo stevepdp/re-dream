@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class PuzzlePieceForChallenges : Item
 {
-    public static event Action OnChallengePuzzlePieceCollected;
+    [SerializeField] Challenge challenge;
+
     public static event Action OnPuzzlePieceCollected;
 
     private void OnTriggerEnter(Collider other)
@@ -13,7 +14,7 @@ public class PuzzlePieceForChallenges : Item
         if (other.gameObject.CompareTag("Player"))
         {
             OnPuzzlePieceCollected?.Invoke();
-            OnChallengePuzzlePieceCollected?.Invoke();
+            challenge?.SetChallengePuzzlePieceCollected();
         }
     }
 }
