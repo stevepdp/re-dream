@@ -66,6 +66,7 @@ public class Player : MonoBehaviour
     {
         Challenge.OnDisableProjectile += DisableProjectile;
         Challenge.OnEnableProjectile += EnableProjectile;
+        Crystal.OnCrystalCollected += ResetProjectileAndHUD;
 
         movement = playerControls.Player.Move;
         movement?.Enable();
@@ -133,6 +134,13 @@ public class Player : MonoBehaviour
     {
         canFire = true;
         OnPlayerProjectileReady?.Invoke();
+    }
+
+    void ResetProjectileAndHUD()
+    {
+        fireBurnedOut = false;
+        fireCooldownTime = fireCooldownMin;
+        ResetProjectile();
     }
 
     void FireCooldown()
