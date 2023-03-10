@@ -21,19 +21,7 @@ public class PlatformMoving : MonoBehaviour
     void FixedUpdate()
     {
         if (destination != null)
-        {
             AutoMove();
-
-            if (player != null)
-            {
-                // Match the player velocity to the platform here
-                if (player.transform.parent == transform)
-                {
-                    // Alternative to rigidbody?
-                    //player.GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity;
-                }
-            }
-        }
     }
 
     void OnTriggerEnter(Collider other)
