@@ -277,17 +277,6 @@
                 },
                 {
                     "name": "",
-                    "id": "58fbc9c7-43db-4a97-b5be-708fdba92fd1",
-                    "path": "<Gamepad>/rightTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Sprint",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "b1bf2ea7-d260-4eec-a0a9-009f933ca52c",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
@@ -310,19 +299,8 @@
                 },
                 {
                     "name": "",
-                    "id": "be8a9e6c-03ad-4ddc-bf72-3acd19e630bf",
-                    "path": "<Gamepad>/buttonWest",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Fire",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "f94b2d03-ef9e-4be1-9569-29557152e0d1",
-                    "path": "<Gamepad>/buttonEast",
+                    "id": "de991fb5-b09b-4198-9b8d-cc710d688f1e",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
