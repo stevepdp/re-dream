@@ -11,6 +11,7 @@ public enum ChallengeType
     JumpDisabledSurviveTimer,
     SpeedReducedDefeatEnemiesNoTimer,
     WeaponDisabledSurviveTimer,
+    SurviveTimerOnly
     //ContinuousEnemiesSpeedReducedSurviveTimer,
     //ContinuousEnemiesJumpDisabledSurviveTimer
 }
@@ -86,6 +87,10 @@ public class Challenge : MonoBehaviour
             else if (challengeType == ChallengeType.JumpDisabledSurviveTimer)
             {
                 challengeInstructionsText.text += "<br><size=50%>(jump disabled)</size>";
+            }
+            else if (challengeType == ChallengeType.SurviveTimerOnly)
+            {
+                challengeInstructionsText.text += "<br><size=50%>(no enemies...don't fall!)</size>";
             }
 
             challengeTimeRemaining -= 1;
@@ -231,6 +236,10 @@ public class Challenge : MonoBehaviour
                 StartWeaponDisabledSurviveTimer();
                 return;
 
+            case ChallengeType.SurviveTimerOnly:
+                StartSurviveTimerOnly();
+                return;
+
             default:
                 Invoke("EndChallenge", challengeEndDelay);
                 return;
@@ -254,6 +263,12 @@ public class Challenge : MonoBehaviour
     {
         OnReducePlayerSpeed?.Invoke();
         InvokeRepeating("SpawnEnemy", challengeEnemySpawnDelay, challengeEnemySpawnDelay);
+    }
+
+    void StartSurviveTimerOnly()
+    {
+        challengeTimeRemaining = challengeLengthInSecs;
+        StartCoroutine(CountdownTimer());
     }
 
     void StartTimer()
@@ -294,6 +309,10 @@ public class Challenge : MonoBehaviour
         else if (challengeType == ChallengeType.WeaponDisabledSurviveTimer && challengeTimeRemaining <= 0)
         {
             OnEnableProjectile?.Invoke();
+            Invoke("EndChallenge", challengeEndDelay);
+        }
+        else if (challengeType == ChallengeType.SurviveTimerOnly && challengeTimeRemaining <= 0)
+        {
             Invoke("EndChallenge", challengeEndDelay);
         }
     }
