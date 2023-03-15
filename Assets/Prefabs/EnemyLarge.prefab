@@ -153,7 +153,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasChased: 0
   isChasing: 0
-  isIdle: 0
   aggroDistance: 7
   giveUpDistance: 14
   hp: 1

@@ -16,6 +16,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8789222289927608317, guid: 33fb1c02260e9e542800d31eff9be6ee, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789222289927608317, guid: 33fb1c02260e9e542800d31eff9be6ee, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789222289927608317, guid: 33fb1c02260e9e542800d31eff9be6ee, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789222289927608317, guid: 33fb1c02260e9e542800d31eff9be6ee, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -77,11 +89,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasChased: 0
   isChasing: 0
-  isIdle: 0
   aggroDistance: 99
   giveUpDistance: 99
   hp: 1
-  moveSpeed: 3
+  moveSpeed: 5
   agent: {fileID: 0}
   player: {fileID: 0}
   basePos: {x: 0, y: 0, z: 0}

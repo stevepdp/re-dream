@@ -11,7 +11,8 @@ public enum ChallengeType
     JumpDisabledSurviveTimer,
     SpeedReducedDefeatEnemiesNoTimer,
     WeaponDisabledSurviveTimer,
-    SurviveTimerOnly
+    SurviveTimerOnly,
+    SurviveTimerOnlyAndRun
     //ContinuousEnemiesSpeedReducedSurviveTimer,
     //ContinuousEnemiesJumpDisabledSurviveTimer
 }
@@ -90,7 +91,11 @@ public class Challenge : MonoBehaviour
             }
             else if (challengeType == ChallengeType.SurviveTimerOnly)
             {
-                challengeInstructionsText.text += "<br><size=50%>(no enemies...don't fall!)</size>";
+                challengeInstructionsText.text += "<br><size=50%>don't fall!</size>";
+            }
+            else if (challengeType == ChallengeType.SurviveTimerOnlyAndRun)
+            {
+                challengeInstructionsText.text += "<br><size=50%>run!</size>";
             }
 
             challengeTimeRemaining -= 1;
@@ -236,7 +241,8 @@ public class Challenge : MonoBehaviour
                 StartWeaponDisabledSurviveTimer();
                 return;
 
-            case ChallengeType.SurviveTimerOnly:
+            case ChallengeType.SurviveTimerOnly or 
+                 ChallengeType.SurviveTimerOnlyAndRun:
                 StartSurviveTimerOnly();
                 return;
 

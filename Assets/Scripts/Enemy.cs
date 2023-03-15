@@ -16,6 +16,12 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private Vector3 basePos;
 
+    public float MoveSpeed
+    {
+        get { return moveSpeed; }
+        set { moveSpeed = value; }
+    }
+
     public int HP
     {
         get { return hp; }
