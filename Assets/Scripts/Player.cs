@@ -56,6 +56,11 @@ public class Player : MonoBehaviour
         playerControls = new PlayerControls();
     }
 
+    void Update()
+    {
+        CheckEnemyCollision();
+    }
+
     void Start()
     {
         Invoke("CheckIdle", idleCheckTime);
@@ -88,11 +93,20 @@ public class Player : MonoBehaviour
         fire?.Disable();
     }
 
-    void OnControllerColliderHit(ControllerColliderHit hit)
+    void CheckEnemyCollision()
     {
-        if (hit.collider.CompareTag("Enemy"))
+        // Enemies do not move with physics, so it's neccessary to instead manually check for them
+        float capsuleRadius = 0.6f;
+        float centerOffset = 2f;
+
+        Vector3 capsulePos = transform.position;
+        capsulePos.y += centerOffset; // center
+        
+        Collider[] colliders = Physics.OverlapCapsule(capsulePos, capsulePos, capsuleRadius);
+        foreach (var collider in colliders)
         {
-            DeductHP();
+            if (collider.gameObject.CompareTag("Enemy"))
+                DeductHP();
         }
     }
 
