@@ -22,12 +22,14 @@ public class TutorialTrigger : MonoBehaviour
 
     void OnEnable()
     {
+        JournalViewer.OnJournalOpened += HideTutorial;
         PauseMenu.OnPlayerPaused += HideTutorial;
         Crystal.OnCrystalCollected += SetLessonLearned;
     }
 
     void OnDisable()
     {
+        JournalViewer.OnJournalOpened -= HideTutorial;
         PauseMenu.OnPlayerPaused -= HideTutorial;
         Crystal.OnCrystalCollected -= SetLessonLearned;
     }

@@ -1,17 +1,22 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PuzzlePiece : Item
 {
-    public static event Action OnPuzzlePieceCollected;
+    public static event Action<PuzzlePiece> OnPuzzlePieceCollected;
+
+    [SerializeField] int storyId;
+
+    public int StoryId
+    {
+        get { return storyId; }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            OnPuzzlePieceCollected?.Invoke();
+            OnPuzzlePieceCollected?.Invoke(this);
         }
     }
 }

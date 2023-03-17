@@ -6,6 +6,7 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField] GameObject canvasPause;
     [SerializeField] GameObject panelPause;
+    [SerializeField] GameObject panelJournal;
     [SerializeField] InputAction pause;
     [SerializeField] PlayerControls playerControls;
 
@@ -37,19 +38,31 @@ public class PauseMenu : MonoBehaviour
 
     public void ClosePanel()
     {
-        OnPlayerResumed?.Invoke();
+        if (panelJournal != null)
+        {
+            if (!panelJournal.activeInHierarchy)
+            {
+                OnPlayerResumed?.Invoke();
 
-        GameManager.instance?.HideCursorLocked();
+                GameManager.instance?.HideCursorLocked();
 
-        Time.timeScale = 1;
-        panelPause?.SetActive(false);
+                Time.timeScale = 1;
+                panelPause?.SetActive(false);
+            }
+        }
     }
 
     void Pause()
     {
-        OnPlayerPaused?.Invoke();
-        Time.timeScale = 0;
-        panelPause?.SetActive(true);
+        if (panelJournal != null)
+        {
+            if (!panelJournal.activeInHierarchy)
+            {
+                OnPlayerPaused?.Invoke();
+                Time.timeScale = 0;
+                panelPause?.SetActive(true);
+            }
+        }
     }
 
     void ShowCursor()
@@ -69,7 +82,7 @@ public class PauseMenu : MonoBehaviour
 
     void ShowPanel(InputAction.CallbackContext context)
     {
-        if (!panelPause.activeInHierarchy)
+        if (!panelPause.activeInHierarchy && !panelJournal.activeInHierarchy)
         {
             GameManager.instance?.ShowCursorConfined();
             Pause();
@@ -82,7 +95,7 @@ public class PauseMenu : MonoBehaviour
 
     void ShowPanelLostFocus()
     {
-        if (!panelPause.activeInHierarchy)
+        if (!panelPause.activeInHierarchy && !panelJournal.activeInHierarchy)
         {
             GameManager.instance?.ShowCursorFree();
             Pause();

@@ -17,6 +17,8 @@ public class PlayerController : StarterAssets.ThirdPersonController
         Challenge.OnRestorePlayerSpeed += RestorePlayerSpeed;
         TutorialTrigger.OnReducePlayerSpeed += ReducePlayerSpeed;
         TutorialTrigger.OnRestorePlayerSpeed += RestorePlayerSpeed;
+        JournalViewer.OnJournalOpened += LockCamera;
+        JournalViewer.OnJournalClosed += FreeCamera;
         PauseMenu.OnPlayerPaused += LockCamera;
         PauseMenu.OnPlayerResumed += FreeCamera;
     }
@@ -27,6 +29,8 @@ public class PlayerController : StarterAssets.ThirdPersonController
         Challenge.OnEnableJump -= EnablePlayerJump;
         Challenge.OnReducePlayerSpeed -= ReducePlayerSpeed;
         Challenge.OnRestorePlayerSpeed -= RestorePlayerSpeed;
+        JournalViewer.OnJournalOpened -= LockCamera;
+        JournalViewer.OnJournalClosed -= FreeCamera;
         TutorialTrigger.OnReducePlayerSpeed -= ReducePlayerSpeed;
         TutorialTrigger.OnRestorePlayerSpeed -= RestorePlayerSpeed;
         PauseMenu.OnPlayerPaused -= LockCamera;

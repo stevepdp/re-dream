@@ -64,6 +64,33 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Journal"",
+                    ""type"": ""Button"",
+                    ""id"": ""9816b73b-ddb3-460c-bc00-9202618df2ad"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""JournalPageLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""e5937b6f-8c40-4dd7-9910-e2b3fab95688"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""JournalPageRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""5c2ea910-cc39-4d3f-9aa5-61833ac40211"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Fire"",
                     ""type"": ""Button"",
                     ""id"": ""c60b6012-b223-4ebf-96a5-7356e1747c0c"",
@@ -428,6 +455,94 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""ToggleHUD"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""24dca188-da0c-4622-9e14-47d46f7b2777"",
+                    ""path"": ""<Keyboard>/j"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Journal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3ff7957c-6c78-4f36-8005-43ee3f24878f"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Journal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""tempName1"",
+                    ""id"": ""f75d5fb2-f3f5-49b8-9a36-5dd65e0903f3"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": """",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""tempName"",
+                    ""id"": ""8d95a1af-012d-4d91-a0a6-9d82ff55dcef"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": """",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4bfb4c8c-c94b-40a7-8125-ead9847d576f"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""JournalPageLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fbd8b3eb-4c9f-423d-b677-7b0b67ddc3ca"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""JournalPageLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b2584fee-526e-4bab-bfd2-1d5a0b686cd9"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""JournalPageRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c18bbcaa-b0f3-4ba2-b8f2-8e13da962275"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""JournalPageRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -488,6 +603,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
+        m_Player_Journal = m_Player.FindAction("Journal", throwIfNotFound: true);
+        m_Player_JournalPageLeft = m_Player.FindAction("JournalPageLeft", throwIfNotFound: true);
+        m_Player_JournalPageRight = m_Player.FindAction("JournalPageRight", throwIfNotFound: true);
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
         m_Player_Accept = m_Player.FindAction("Accept", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
@@ -556,6 +674,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Sprint;
+    private readonly InputAction m_Player_Journal;
+    private readonly InputAction m_Player_JournalPageLeft;
+    private readonly InputAction m_Player_JournalPageRight;
     private readonly InputAction m_Player_Fire;
     private readonly InputAction m_Player_Accept;
     private readonly InputAction m_Player_Pause;
@@ -569,6 +690,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
+        public InputAction @Journal => m_Wrapper.m_Player_Journal;
+        public InputAction @JournalPageLeft => m_Wrapper.m_Player_JournalPageLeft;
+        public InputAction @JournalPageRight => m_Wrapper.m_Player_JournalPageRight;
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
         public InputAction @Accept => m_Wrapper.m_Player_Accept;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
@@ -595,6 +719,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Sprint.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
                 @Sprint.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
                 @Sprint.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
+                @Journal.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJournal;
+                @Journal.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJournal;
+                @Journal.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJournal;
+                @JournalPageLeft.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJournalPageLeft;
+                @JournalPageLeft.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJournalPageLeft;
+                @JournalPageLeft.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJournalPageLeft;
+                @JournalPageRight.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJournalPageRight;
+                @JournalPageRight.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJournalPageRight;
+                @JournalPageRight.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJournalPageRight;
                 @Fire.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
                 @Fire.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
                 @Fire.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
@@ -626,6 +759,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Sprint.started += instance.OnSprint;
                 @Sprint.performed += instance.OnSprint;
                 @Sprint.canceled += instance.OnSprint;
+                @Journal.started += instance.OnJournal;
+                @Journal.performed += instance.OnJournal;
+                @Journal.canceled += instance.OnJournal;
+                @JournalPageLeft.started += instance.OnJournalPageLeft;
+                @JournalPageLeft.performed += instance.OnJournalPageLeft;
+                @JournalPageLeft.canceled += instance.OnJournalPageLeft;
+                @JournalPageRight.started += instance.OnJournalPageRight;
+                @JournalPageRight.performed += instance.OnJournalPageRight;
+                @JournalPageRight.canceled += instance.OnJournalPageRight;
                 @Fire.started += instance.OnFire;
                 @Fire.performed += instance.OnFire;
                 @Fire.canceled += instance.OnFire;
@@ -687,6 +829,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
+        void OnJournal(InputAction.CallbackContext context);
+        void OnJournalPageLeft(InputAction.CallbackContext context);
+        void OnJournalPageRight(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
         void OnAccept(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);

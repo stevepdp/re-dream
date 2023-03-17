@@ -9,12 +9,16 @@ public class Rotate : MonoBehaviour
 
     void OnEnable()
     {
+        JournalViewer.OnJournalOpened += PauseRotation;
+        JournalViewer.OnJournalClosed += EnableRotation;
         PauseMenu.OnPlayerPaused += PauseRotation;
         PauseMenu.OnPlayerResumed += EnableRotation;
     }
 
     void OnDisable()
     {
+        JournalViewer.OnJournalOpened -= PauseRotation;
+        JournalViewer.OnJournalClosed -= EnableRotation;
         PauseMenu.OnPlayerPaused -= PauseRotation;
         PauseMenu.OnPlayerResumed -= EnableRotation;
     }

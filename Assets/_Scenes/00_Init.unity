@@ -237,7 +237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 2503211571852810347, guid: 1f8ec324e4744cf4d8f7e8d0ad16899d, type: 3}
-  inputManager: {fileID: 8376501655078630095, guid: e6377daa14e654d499d52197d2ac1c15, type: 3}
+  journalViewer: {fileID: 5947432961050703205, guid: 8b5e91b10ec4181458e0ba87a5b42b77, type: 3}
 --- !u!4 &1753045766
 Transform:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ public class TutorialEvent : MonoBehaviour
     [SerializeField] GameObject tutorialTitleObj;
     [SerializeField] GameObject tutorialImageObj;
     [SerializeField] GameObject tutorialBodyObj;
+    [SerializeField] GameObject panelJournal;
     [SerializeField] float tutorialTimeout;
     Sprite tutorialSprite;
 
@@ -19,6 +20,7 @@ public class TutorialEvent : MonoBehaviour
 
     void OnEnable()
     {
+        JournalViewer.OnJournalOpened += HideTutorial;
         PauseMenu.OnPlayerPaused += HideTutorial;
         Player.OnPlayerIdle += SetIdleTutorial;
         Player.OnPlayerInput += HideTutorial;
@@ -26,6 +28,7 @@ public class TutorialEvent : MonoBehaviour
 
     void OnDisable()
     {
+        JournalViewer.OnJournalOpened -= HideTutorial;
         PauseMenu.OnPlayerPaused -= HideTutorial;
         Player.OnPlayerIdle -= SetIdleTutorial;
         Player.OnPlayerInput -= HideTutorial;
@@ -49,15 +52,22 @@ public class TutorialEvent : MonoBehaviour
 
     void SetIdleTutorial()
     {
-        TMP_Text titleText = tutorialTitleObj?.GetComponent<TMP_Text>();
-        if (titleText != null) titleText.text = "Tutorial: Movement";
+        if (panelJournal != null)
+        {
+            if (!panelJournal.activeInHierarchy)
+            {
+                TMP_Text titleText = tutorialTitleObj?.GetComponent<TMP_Text>();
+                if (titleText != null) titleText.text = "Tutorial: Movement";
 
-        Image tutorialImage = tutorialImageObj?.GetComponent<Image>();
-        if (tutorialImage != null) tutorialImage.sprite = Resources.Load<Sprite>(BASE_DIR_CONTROLS + "left-stick-full");
+                Image tutorialImage = tutorialImageObj?.GetComponent<Image>();
+                if (tutorialImage != null) tutorialImage.sprite = Resources.Load<Sprite>(BASE_DIR_CONTROLS + "left-stick-full");
 
-        TMP_Text bodyText = tutorialBodyObj?.GetComponent<TMP_Text>();
-        if (bodyText != null) bodyText.text = "...or press the <b>WASD</b> keys on your keyboard.";
+                TMP_Text bodyText = tutorialBodyObj?.GetComponent<TMP_Text>();
+                if (bodyText != null) bodyText.text = "...or press the <b>WASD</b> keys on your keyboard.";
 
-        ShowTutorial();
+                ShowTutorial();
+            }
+        }
+        
     }
 }

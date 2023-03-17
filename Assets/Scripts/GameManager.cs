@@ -108,7 +108,7 @@ public class GameManager : MonoBehaviour
         OnPlayerCrystalCountUpdated?.Invoke();
     }
 
-    void IncrementPuzzlePiece() {
+    void IncrementPuzzlePiece(PuzzlePiece puzzlePiece) {
         playerPuzzlePiecesCount += 1;
         OnPlayerPuzzlePiecesCountUpdated?.Invoke();
     }
