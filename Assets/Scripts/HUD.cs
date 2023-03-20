@@ -12,6 +12,7 @@ public class HUD : MonoBehaviour
     [SerializeField] Player player;
     [SerializeField] TMP_Text hudCrystalCountText;
     [SerializeField] TMP_Text hudPuzzlePieceCountText;
+    [SerializeField] MeshRenderer hudJournalNotifierMesh;
     [SerializeField] TMP_Text hudProjectileStatusText;
     [SerializeField] Slider hudBurnoutSlider;
     [SerializeField] Image hudBurnoutFillImage;
@@ -41,9 +42,11 @@ public class HUD : MonoBehaviour
         GameManager.OnPlayerCrystalCountUpdated += SetCrystalCountText;
         GameManager.OnRoomPuzzlePiecesCounted += SetPuzzlePieceCountText;
         GameManager.OnPlayerPuzzlePiecesCountUpdated += SetPuzzlePieceCountText;
+        JournalViewer.OnJournalOpened += HideJournalNotification;
         Player.OnPlayerToggleHUD += ToggleHUD;
         Player.OnPlayerProjectileBurnout += SetProjectileBurnedOut;
         Player.OnPlayerProjectileReady += SetProjectileReady;
+        PuzzlePiece.OnPuzzlePieceCollected += ShowJournalNotification;
     }
 
     void OnDisable()
@@ -54,9 +57,17 @@ public class HUD : MonoBehaviour
         GameManager.OnPlayerCrystalCountUpdated -= SetCrystalCountText;
         GameManager.OnRoomPuzzlePiecesCounted -= SetPuzzlePieceCountText;
         GameManager.OnPlayerPuzzlePiecesCountUpdated -= SetPuzzlePieceCountText;
+        JournalViewer.OnJournalOpened -= HideJournalNotification;
         Player.OnPlayerToggleHUD -= ToggleHUD;
         Player.OnPlayerProjectileBurnout -= SetProjectileBurnedOut;
         Player.OnPlayerProjectileReady -= SetProjectileReady;
+        PuzzlePiece.OnPuzzlePieceCollected -= ShowJournalNotification;
+    }
+
+    void HideJournalNotification()
+    {
+        if (hudJournalNotifierMesh != null)
+            hudJournalNotifierMesh.enabled = false;
     }
 
     void SetCrystalCountText()
@@ -93,6 +104,12 @@ public class HUD : MonoBehaviour
     {
         if (hudPuzzlePieceCountText != null)
             hudPuzzlePieceCountText.text = $"<size=150%>{GameManager.instance?.PlayerPuzzlePiecesCount}</size>/<size=75%>{GameManager.instance?.RoomPuzzlePiecesTotal}*</size>";
+    }
+
+    void ShowJournalNotification(PuzzlePiece puzzlePiece)
+    {
+        if (hudJournalNotifierMesh != null)
+            hudJournalNotifierMesh.enabled = true;
     }
 
     void ToggleHUD()
