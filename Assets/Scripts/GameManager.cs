@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -66,6 +64,7 @@ public class GameManager : MonoBehaviour
         Exit.OnPlayerEnteredExit += TestRoomRequirementsMet;
         Player.OnPlayerDead += LevelReset;
         PuzzlePiece.OnPuzzlePieceCollected += IncrementPuzzlePiece;
+        PuzzlePieceForChallenges.OnPuzzlePieceCollected += IncrementPuzzlePiece;
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -75,13 +74,15 @@ public class GameManager : MonoBehaviour
         Exit.OnPlayerEnteredExit -= TestRoomRequirementsMet;
         Player.OnPlayerDead -= LevelReset;
         PuzzlePiece.OnPuzzlePieceCollected -= IncrementPuzzlePiece;
+        PuzzlePieceForChallenges.OnPuzzlePieceCollected -= IncrementPuzzlePiece;
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     void CountRoomPuzzlePieces()
     {
         PuzzlePiece[] puzzlePieces = FindObjectsOfType<PuzzlePiece>();
-        roomPuzzlePiecesTotal = puzzlePieces.Length;
+        PuzzlePieceForChallenges[] puzzlePiecesForChallenges = FindObjectsOfType<PuzzlePieceForChallenges>();
+        roomPuzzlePiecesTotal = (puzzlePieces.Length + puzzlePiecesForChallenges.Length);
         OnRoomPuzzlePiecesCounted?.Invoke();
     }
 
@@ -108,7 +109,7 @@ public class GameManager : MonoBehaviour
         OnPlayerCrystalCountUpdated?.Invoke();
     }
 
-    void IncrementPuzzlePiece(PuzzlePiece puzzlePiece) {
+    void IncrementPuzzlePiece(UnityEngine.Object puzzlePiece) {
         playerPuzzlePiecesCount += 1;
         OnPlayerPuzzlePiecesCountUpdated?.Invoke();
     }

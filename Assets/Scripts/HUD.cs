@@ -47,6 +47,7 @@ public class HUD : MonoBehaviour
         Player.OnPlayerProjectileBurnout += SetProjectileBurnedOut;
         Player.OnPlayerProjectileReady += SetProjectileReady;
         PuzzlePiece.OnPuzzlePieceCollected += ShowJournalNotification;
+        PuzzlePieceForChallenges.OnPuzzlePieceCollected += ShowJournalNotification;
     }
 
     void OnDisable()
@@ -62,6 +63,7 @@ public class HUD : MonoBehaviour
         Player.OnPlayerProjectileBurnout -= SetProjectileBurnedOut;
         Player.OnPlayerProjectileReady -= SetProjectileReady;
         PuzzlePiece.OnPuzzlePieceCollected -= ShowJournalNotification;
+        PuzzlePieceForChallenges.OnPuzzlePieceCollected -= ShowJournalNotification;
     }
 
     void HideJournalNotification()
@@ -106,7 +108,7 @@ public class HUD : MonoBehaviour
             hudPuzzlePieceCountText.text = $"<size=150%>{GameManager.instance?.PlayerPuzzlePiecesCount}</size>/<size=75%>{GameManager.instance?.RoomPuzzlePiecesTotal}*</size>";
     }
 
-    void ShowJournalNotification(PuzzlePiece puzzlePiece)
+    void ShowJournalNotification(Object puzzlePiece)
     {
         if (hudJournalNotifierMesh != null)
             hudJournalNotifierMesh.enabled = true;

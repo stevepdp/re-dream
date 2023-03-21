@@ -21,13 +21,11 @@ public class JournalViewer : MonoBehaviour
     InputAction journalOpen;
     InputAction journalPageLeft;
     InputAction journalPageRight;
-    InputAction cancel;
     
     int firstPageIndex = 0;
     int currentPageNumber = 0;
-    string currentPageContent;
-    string pageLockedStr = "Locked<br><br>Hint: Journal pages will reveal themselves with each puzzle piece that you find.";
-
+    string pageLockedStr = "<color=red>Locked</color><br><br>Hint: Journal pages will reveal themselves with each puzzle piece that you find.";
+     
     void Awake()
     {
         playerControls = new PlayerControls();
@@ -62,15 +60,6 @@ public class JournalViewer : MonoBehaviour
         journalOpen.Disable();
         journalPageLeft.Disable();
         journalPageRight.Disable();
-    }
-
-    void GetPageScriptableObject()
-    {
-        if (pageScriptableObject != null)
-        {
-            currentPageNumber = pageScriptableObject.pageNumber;
-            currentPageContent = pageScriptableObject.pageContent;
-        }       
     }
 
     void DisableJournalPanel()
@@ -125,7 +114,7 @@ public class JournalViewer : MonoBehaviour
 
     void RenderPage()
     {
-        if (pageNumberText != null)
+        if (pageNumberText != null && currentPageNumber != firstPageIndex)
             pageNumberText.text = currentPageNumber.ToString();
 
         if (journalController != null && pageContentText != null)
@@ -135,12 +124,18 @@ public class JournalViewer : MonoBehaviour
             if (journalPageScriptableObject is JournalPage)
             {
                 JournalPage thePage = (JournalPage) journalPageScriptableObject;
-                pageNumberText.text = thePage.pageNumber.ToString();
+                if (currentPageNumber != firstPageIndex)
+                    pageNumberText.text = thePage.pageNumber.ToString();
+                else
+                    pageNumberText.text = "";
                 pageContentText.text = thePage.pageContent;
             }
             else
             {
-                pageNumberText.text = currentPageNumber.ToString();
+                if (currentPageNumber != firstPageIndex)
+                    pageNumberText.text = currentPageNumber.ToString();
+                else
+                    pageNumberText.text = "";
                 pageContentText.text = pageLockedStr;
             }
         }

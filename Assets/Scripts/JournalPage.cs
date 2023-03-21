@@ -5,4 +5,5 @@ public class JournalPage : ScriptableObject
 {
     public int pageNumber;
     public string pageContent;
+    public bool pageUnlocked;
 }

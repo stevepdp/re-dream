@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43667546, g: 0.48427135, b: 0.5645225, a: 1}
+  m_IndirectSpecularColor: {r: 0.43667564, g: 0.48427135, b: 0.5645232, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: 2e3abd63863a2b846a925ce580d78993, type: 2}
-  m_LightingSettings: {fileID: 4890085278179872738, guid: a53009be1750d7347bdab4d324cfe1ab, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 448915d5f24090946a164bda3e67d5a2, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -237,7 +237,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 2503211571852810347, guid: 1f8ec324e4744cf4d8f7e8d0ad16899d, type: 3}
-  journalViewer: {fileID: 5947432961050703205, guid: 8b5e91b10ec4181458e0ba87a5b42b77, type: 3}
 --- !u!4 &1753045766
 Transform:
   m_ObjectHideFlags: 0

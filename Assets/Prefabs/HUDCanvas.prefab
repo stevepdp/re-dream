@@ -860,7 +860,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1244
+  m_VersionIndex: 1262
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1366,7 +1366,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1331
+  m_VersionIndex: 1349
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -2187,6 +2187,7 @@ MonoBehaviour:
   player: {fileID: 0}
   hudCrystalCountText: {fileID: 6943571998638989857}
   hudPuzzlePieceCountText: {fileID: 6943571998978115402}
+  hudJournalNotifierMesh: {fileID: 1928531435689671325}
   hudProjectileStatusText: {fileID: 337466252477795094}
   hudBurnoutSlider: {fileID: 1091534686}
   hudBurnoutFillImage: {fileID: 1867203841}
@@ -2446,5 +2447,10 @@ PrefabInstance:
 --- !u!4 &759043195792982514 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cf3c27b06ecb7c84ab646fe4670b9d2f, type: 3}
+  m_PrefabInstance: {fileID: 937330083508938265}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1928531435689671325 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: cf3c27b06ecb7c84ab646fe4670b9d2f, type: 3}
   m_PrefabInstance: {fileID: 937330083508938265}
   m_PrefabAsset: {fileID: 0}

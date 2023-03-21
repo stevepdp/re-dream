@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.028855398, g: 0.24600685, b: 0.50785923, a: 1}
+  m_IndirectSpecularColor: {r: 0.028854433, g: 0.24600574, b: 0.50785923, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 4890085278179872738, guid: a53009be1750d7347bdab4d324cfe1ab, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 448915d5f24090946a164bda3e67d5a2, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -431,12 +431,16 @@ PrefabInstance:
       value: PuzzlePieceChallenge
       objectReference: {fileID: 0}
     - target: {fileID: 5287969756544339782, guid: 4f0584712c8191f419cb0e75d20b4ef8, type: 3}
+      propertyPath: storyId
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5287969756544339782, guid: 4f0584712c8191f419cb0e75d20b4ef8, type: 3}
       propertyPath: challenge
       value: 
       objectReference: {fileID: 77465046}
     - target: {fileID: 5349219057531055392, guid: 4f0584712c8191f419cb0e75d20b4ef8, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5349219057531055392, guid: 4f0584712c8191f419cb0e75d20b4ef8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -477,10 +481,6 @@ PrefabInstance:
     - target: {fileID: 5349219057531055392, guid: 4f0584712c8191f419cb0e75d20b4ef8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5599811729390176974, guid: 4f0584712c8191f419cb0e75d20b4ef8, type: 3}
-      propertyPath: storyId
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f0584712c8191f419cb0e75d20b4ef8, type: 3}
@@ -4136,7 +4136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5349219057531055392, guid: c324f118338c6ab4ca1b2edd205b3d63, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5349219057531055392, guid: c324f118338c6ab4ca1b2edd205b3d63, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4180,7 +4180,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5599811729390176974, guid: c324f118338c6ab4ca1b2edd205b3d63, type: 3}
       propertyPath: storyId
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c324f118338c6ab4ca1b2edd205b3d63, type: 3}
@@ -6072,8 +6072,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 398427095}
   - {fileID: 4912028}
+  - {fileID: 398427095}
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7304,7 +7304,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-243720
+  m_Name: pb_Mesh-134564
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -14756,6 +14756,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1949021638}
+    - target: {fileID: 1928531435689671325, guid: 1ed8f222ed172ff43adbfe99843740ed, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5576061223962470020, guid: 1ed8f222ed172ff43adbfe99843740ed, type: 3}
       propertyPath: player
       value: 
@@ -19744,7 +19748,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-243732
+  m_Name: pb_Mesh-134576
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

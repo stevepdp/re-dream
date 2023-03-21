@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pageNumber: 11
   pageContent: Eleventh page
+  pageUnlocked: 0

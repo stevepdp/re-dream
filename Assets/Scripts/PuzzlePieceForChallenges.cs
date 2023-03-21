@@ -1,19 +1,23 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PuzzlePieceForChallenges : Item
 {
-    [SerializeField] Challenge challenge;
+    public static event Action<PuzzlePieceForChallenges> OnPuzzlePieceCollected;
 
-    public static event Action OnPuzzlePieceCollected;
+    [SerializeField] Challenge challenge;
+    [SerializeField] int storyId;
+
+    public int StoryId
+    {
+        get { return storyId; }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            OnPuzzlePieceCollected?.Invoke();
+            OnPuzzlePieceCollected?.Invoke(this);
             challenge?.SetChallengePuzzlePieceCollected();
         }
     }

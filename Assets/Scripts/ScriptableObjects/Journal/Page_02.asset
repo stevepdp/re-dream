@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pageNumber: 2
   pageContent: Second page content
+  pageUnlocked: 0
