@@ -5,10 +5,16 @@ public class JournalController : MonoBehaviour
     [SerializeField] JournalPage[] journalPageScriptableObjects;
     int firstPage = 0;
     int pageOffset = 1;
+    int lastUnlockedPage = 0;
 
     public int pageCount
     {
         get { return journalPageScriptableObjects.Length - pageOffset; }
+    }
+
+    public int LastUnlockedPage
+    {
+        get { return lastUnlockedPage; }
     }
 
     void Awake()
@@ -34,10 +40,12 @@ public class JournalController : MonoBehaviour
         if (puzzlePieceObj is PuzzlePiece puzzlePiece)
         {
             journalPageScriptableObjects[puzzlePiece.StoryId].pageUnlocked = true;
+            lastUnlockedPage = puzzlePiece.StoryId;
         }
         else if (puzzlePieceObj is PuzzlePieceForChallenges puzzlePieceForChallenges)
         {
             journalPageScriptableObjects[puzzlePieceForChallenges.StoryId].pageUnlocked = true;
+            lastUnlockedPage = puzzlePieceForChallenges.StoryId;
         }
         else
         {

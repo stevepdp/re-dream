@@ -83,6 +83,11 @@ public class JournalViewer : MonoBehaviour
             {
                 OnJournalOpened?.Invoke();
                 Time.timeScale = 0;
+                if (journalController.LastUnlockedPage != firstPageIndex)
+                {
+                    currentPageNumber = journalController.LastUnlockedPage;
+                    RenderPage();
+                }
                 journalPanel?.SetActive(true);
             }
         }
@@ -124,10 +129,12 @@ public class JournalViewer : MonoBehaviour
             if (journalPageScriptableObject is JournalPage)
             {
                 JournalPage thePage = (JournalPage) journalPageScriptableObject;
+                
                 if (currentPageNumber != firstPageIndex)
                     pageNumberText.text = thePage.pageNumber.ToString();
                 else
                     pageNumberText.text = "";
+                
                 pageContentText.text = thePage.pageContent;
             }
             else
