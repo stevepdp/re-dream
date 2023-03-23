@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8789222289927608305, guid: 33fb1c02260e9e542800d31eff9be6ee, type: 3}
       propertyPath: m_Name
-      value: EnemyLargeChallenge
+      value: EnemyGiantChallenge
       objectReference: {fileID: 0}
     - target: {fileID: 8789222289927608317, guid: 33fb1c02260e9e542800d31eff9be6ee, type: 3}
       propertyPath: m_RootOrder
@@ -17,15 +17,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8789222289927608317, guid: 33fb1c02260e9e542800d31eff9be6ee, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8789222289927608317, guid: 33fb1c02260e9e542800d31eff9be6ee, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8789222289927608317, guid: 33fb1c02260e9e542800d31eff9be6ee, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8789222289927608317, guid: 33fb1c02260e9e542800d31eff9be6ee, type: 3}
       propertyPath: m_LocalPosition.x
