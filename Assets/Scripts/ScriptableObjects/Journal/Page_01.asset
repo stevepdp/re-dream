@@ -13,5 +13,10 @@ MonoBehaviour:
   m_Name: Page_01
   m_EditorClassIdentifier: 
   pageNumber: 1
-  pageContent: Congrats on getting your first puzzle piece!
+  pageContent: As I descend into the cave, a sense of foreboding weighs heavy on
+    my heart. I can feel the shadows of my doubts and fears closing in around me.
+    But I am not defenseless. With a focused mind, I am able to blast away the shadows
+    and emerge victorious.<br><br>With each puzzle piece I find, a new section of
+    my journal opens up, revealing more about the dream that has plagued me for so
+    long.
   pageUnlocked: 0

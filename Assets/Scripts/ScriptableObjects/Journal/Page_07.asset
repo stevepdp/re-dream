@@ -13,5 +13,10 @@ MonoBehaviour:
   m_Name: Page_07
   m_EditorClassIdentifier: 
   pageNumber: 7
-  pageContent: Seventh  page content
+  pageContent: 'I leaped from cloud to cloud until I found myself in another challenge
+    space. This time, I couldn''t use my mindset skills to fight back. Instead, I
+    had to dodge the phantoms that kept spawning. With every near-miss, I felt myself
+    getting better at predicting their movements. Eventually, the phantoms disappeared,
+    leaving a puzzle piece as a reward. I realized that sometimes, the only way to
+    succeed is to focus on what I can control and stay calm under pressure. '
   pageUnlocked: 0

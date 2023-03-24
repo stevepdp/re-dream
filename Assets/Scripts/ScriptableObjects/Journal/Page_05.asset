@@ -13,5 +13,12 @@ MonoBehaviour:
   m_Name: Page_05
   m_EditorClassIdentifier: 
   pageNumber: 5
-  pageContent: Fifth page content
+  pageContent: I climbed the towering rock face, each platform taking me closer to
+    my goal. As I reached the top, more nightmares emerged from the shadows. My movements
+    felt slow and sluggish, as if I were stuck in a dream. But I persevered, defeating
+    each nightmare that came my way.<br><br>As I collected the puzzle piece, I felt
+    a sense of relief wash over me. The dream was teaching me that even in the face
+    of adversity, I could find strength within myself. With each challenge, I grew
+    stronger and more confident. I knew that whatever obstacles lay ahead, I was
+    ready to face them head-on.
   pageUnlocked: 0

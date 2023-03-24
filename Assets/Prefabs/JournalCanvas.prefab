@@ -464,7 +464,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13f23eb49bcc5264e9d7129788230040, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unlockedPages: 
   journalPageScriptableObjects:
   - {fileID: 11400000, guid: 3d644a03c6cccae47a27630ff74e26ae, type: 2}
   - {fileID: 11400000, guid: 813c9f7655e1418438e5c3a5dd7e8178, type: 2}

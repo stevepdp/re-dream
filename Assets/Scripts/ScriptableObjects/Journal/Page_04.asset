@@ -13,5 +13,9 @@ MonoBehaviour:
   m_Name: Page_04
   m_EditorClassIdentifier: 
   pageNumber: 4
-  pageContent: Fourth page content
+  pageContent: I couldn't help but reflect on the challenges I had faced so far.
+    Each one had forced me to confront something within myself, to dig deep and find
+    the strength to overcome it. The nightmares that had swarmed around me had represented
+    my deepest fears, but in facing them head-on, I had discovered a newfound sense
+    of courage.
   pageUnlocked: 0

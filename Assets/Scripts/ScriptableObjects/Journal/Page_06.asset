@@ -13,5 +13,13 @@ MonoBehaviour:
   m_Name: Page_06
   m_EditorClassIdentifier: 
   pageNumber: 6
-  pageContent: Sixth page content
+  pageContent: 'As I leapt from platform to platform, ascending the rocky face ever
+    higher, I couldn''t shake the feeling that I was being watched. It was as if
+    the nightmares I had defeated were lingering, waiting for their chance to strike
+    again. As I turned to look back, I saw it: the faint glimmer of another puzzle
+    piece. It was almost as if the dream itself was guiding me, urging me to keep
+    going. I pressed on, jumping ever higher until I reached the platform holding
+    the puzzle piece. I picked it up, feeling a rush of satisfaction and excitement.
+    With each piece, I was one step closer to understanding the true purpose of this
+    dream. '
   pageUnlocked: 0
