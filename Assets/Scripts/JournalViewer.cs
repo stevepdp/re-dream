@@ -124,18 +124,16 @@ public class JournalViewer : MonoBehaviour
 
         if (journalController != null && pageContentText != null)
         {
-            object journalPageScriptableObject = journalController.CanViewPage(currentPageNumber);
+            JournalPage journalPageScriptableObject = journalController.CanViewPage(currentPageNumber);
 
-            if (journalPageScriptableObject is JournalPage)
+            if (journalPageScriptableObject != JournalPage.empty)
             {
-                JournalPage thePage = (JournalPage) journalPageScriptableObject;
-                
                 if (currentPageNumber != firstPageIndex)
-                    pageNumberText.text = thePage.pageNumber.ToString();
+                    pageNumberText.text = journalPageScriptableObject.pageNumber.ToString();
                 else
                     pageNumberText.text = "";
                 
-                pageContentText.text = thePage.pageContent;
+                pageContentText.text = journalPageScriptableObject.pageContent;
             }
             else
             {

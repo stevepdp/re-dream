@@ -53,11 +53,11 @@ public class JournalController : MonoBehaviour
         }
     }
 
-    public object CanViewPage(int pageIndex)
+    public JournalPage CanViewPage(int pageIndex)
     {
         if (journalPageScriptableObjects[pageIndex].pageUnlocked)
             return journalPageScriptableObjects[pageIndex];
         else
-            return false;
+            return JournalPage.empty;
     }
 }
