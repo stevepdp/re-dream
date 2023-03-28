@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
             }
             if (_instance == null)
             {
-                _instance = Instantiate(new GameObject()).AddComponent<GameManager>();
+                _instance = Instantiate(new GameObject("GameManager")).AddComponent<GameManager>();
             }
             return _instance;
         }
@@ -63,11 +63,6 @@ public class GameManager : MonoBehaviour
         EnforceSingleInstance();
         LevelSetup();
         HideCursorLocked();
-    }
-
-    void Start()
-    {
-        //DontDestroyOnLoad(this);
     }
 
     void OnApplicationFocus(bool hasFocus)
