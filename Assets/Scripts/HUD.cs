@@ -43,9 +43,9 @@ public class HUD : MonoBehaviour
         GameManager.OnRoomPuzzlePiecesCounted += SetPuzzlePieceCountText;
         GameManager.OnPlayerPuzzlePiecesCountUpdated += SetPuzzlePieceCountText;
         JournalViewer.OnJournalOpened += HideJournalNotification;
-        Player.OnPlayerToggleHUD += ToggleHUD;
         Player.OnPlayerProjectileBurnout += SetProjectileBurnedOut;
         Player.OnPlayerProjectileReady += SetProjectileReady;
+        PlayerInputHUD.OnPlayerToggleHUD += ToggleHUD;
         PuzzlePiece.OnPuzzlePieceCollected += ShowJournalNotification;
         PuzzlePieceForChallenges.OnPuzzlePieceCollected += ShowJournalNotification;
     }
@@ -59,9 +59,9 @@ public class HUD : MonoBehaviour
         GameManager.OnRoomPuzzlePiecesCounted -= SetPuzzlePieceCountText;
         GameManager.OnPlayerPuzzlePiecesCountUpdated -= SetPuzzlePieceCountText;
         JournalViewer.OnJournalOpened -= HideJournalNotification;
-        Player.OnPlayerToggleHUD -= ToggleHUD;
         Player.OnPlayerProjectileBurnout -= SetProjectileBurnedOut;
         Player.OnPlayerProjectileReady -= SetProjectileReady;
+        PlayerInputHUD.OnPlayerToggleHUD -= ToggleHUD;
         PuzzlePiece.OnPuzzlePieceCollected -= ShowJournalNotification;
         PuzzlePieceForChallenges.OnPuzzlePieceCollected -= ShowJournalNotification;
     }

@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     public static event Action OnPlayerInput;
     public static event Action OnPlayerProjectileBurnout;
     public static event Action OnPlayerProjectileReady;
-    public static event Action OnPlayerToggleHUD;
+    
 
     [SerializeField] bool canFire;
     float idleCheckTime = 6f;
@@ -25,7 +25,6 @@ public class Player : MonoBehaviour
     [SerializeField] int hp = 3;
     [SerializeField] InputAction fire;
     [SerializeField] InputAction movement;
-    [SerializeField] InputAction toggleHUD;
     [SerializeField] ParticleSystem particleProjectile;
     [SerializeField] PlayerControls playerControls;
 
@@ -80,10 +79,6 @@ public class Player : MonoBehaviour
         fire = playerControls.Player.Fire;
         fire?.Enable();
         fire.performed += FireProjectile;
-
-        toggleHUD = playerControls.Player.ToggleHUD;
-        toggleHUD?.Enable();
-        toggleHUD.performed += ToggleHUD;
     }
 
     void OnDisable()
@@ -194,5 +189,5 @@ public class Player : MonoBehaviour
         }
     }
 
-    void ToggleHUD(InputAction.CallbackContext context) => OnPlayerToggleHUD?.Invoke();
+    
 }
