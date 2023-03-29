@@ -7,6 +7,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6276259460204308963, guid: 33fb1c02260e9e542800d31eff9be6ee, type: 3}
+      propertyPath: aggroDistance
+      value: 99
+      objectReference: {fileID: 0}
+    - target: {fileID: 6276259460204308963, guid: 33fb1c02260e9e542800d31eff9be6ee, type: 3}
+      propertyPath: giveUpDistance
+      value: 99
+      objectReference: {fileID: 0}
     - target: {fileID: 8789222289927608305, guid: 33fb1c02260e9e542800d31eff9be6ee, type: 3}
       propertyPath: m_Name
       value: EnemyLargeChallenge
@@ -67,8 +75,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6276259460204308963, guid: 33fb1c02260e9e542800d31eff9be6ee, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33fb1c02260e9e542800d31eff9be6ee, type: 3}
 --- !u!1 &7504717306810828351 stripped
 GameObject:
@@ -87,12 +94,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7e5f5ab12a08a540a7ff6df8ab8d1c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasChased: 0
-  isChasing: 0
-  aggroDistance: 99
-  giveUpDistance: 99
   hp: 1
-  moveSpeed: 5
-  agent: {fileID: 0}
-  player: {fileID: 0}
-  basePos: {x: 0, y: 0, z: 0}

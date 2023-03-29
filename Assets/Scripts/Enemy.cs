@@ -3,17 +3,17 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private bool hasChased;
-    [SerializeField] private bool isChasing;
-    [SerializeField] private int aggroDistance = 7;
-    [SerializeField] private int giveUpDistance = 14;
-    [SerializeField] private int hp = 1;
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private NavMeshAgent agent;
+    Color startingColour;
+    NavMeshAgent agent;
     PlayerIdle player;
-    [SerializeField] private Vector3 basePos;
-    private Color startingColour;
-    private Renderer rend;
+    Renderer rend;
+    Vector3 basePos;
+
+    [SerializeField] int aggroDistance = 7;
+    [SerializeField] int giveUpDistance = 14;
+    [SerializeField] float moveSpeed;
+    bool hasChased;
+    bool isChasing;
 
     public float MoveSpeed
     {
@@ -21,18 +21,8 @@ public class Enemy : MonoBehaviour
         set { moveSpeed = value; }
     }
 
-    public int HP
-    {
-        get { return hp; }
-        set { hp = value; }
-    }
-
     void Awake()
     {
-        player = FindObjectOfType<PlayerIdle>();
-
-        rend = GetComponent<Renderer>();
-
         SetupEnemy();
     }
 
@@ -41,26 +31,9 @@ public class Enemy : MonoBehaviour
         ChasePlayer();
     }
 
-    void OnEnable()
-    {
-        GameManager.OnRoomRequirementsMet += AutoKill;
-    }
-
-    void OnDisable()
-    {
-        GameManager.OnRoomRequirementsMet -= AutoKill;
-    }
-
-    void OnParticleCollision(GameObject other)
-    {
-        DeductHP();
-    }
-
-    void AutoKill() => Destroy(gameObject);
-
     void ChasePlayer()
     {
-        if (player != null)
+        if (player != null && rend != null && agent != null)
         {
             float distanceFromPlayer = Vector3.Distance(transform.position, player.transform.position);
             float distanceFromStart = Vector3.Distance(transform.position, basePos);
@@ -95,17 +68,17 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public virtual void DeductHP()
-    {
-        hp--;
-        if (hp <= 0) Destroy(gameObject);
-    }
-
     void SetupEnemy()
     {
         agent = GetComponent<NavMeshAgent>();
-        agent.speed = moveSpeed;
-        basePos = transform.position;
-        startingColour = rend.material.color;
+        rend = GetComponent<Renderer>();
+        player = FindObjectOfType<PlayerIdle>();
+
+        if (agent != null && rend != null)
+        {
+            agent.speed = moveSpeed;
+            basePos = transform.position;
+            startingColour = rend.material.color;
+        }
     }
 }

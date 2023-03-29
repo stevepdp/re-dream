@@ -3,14 +3,17 @@ using UnityEngine;
 public class EnemyRelease : MonoBehaviour
 {
     [Header("Prefab")]
-    [SerializeField] EnemyChallenge enemyPrefab; 
+    [SerializeField] Enemy enemyPrefab; 
     [SerializeField] Transform spawnPoint;
-    [SerializeField] float spawnDelay;
+    [SerializeField] float spawnDelay; 
+
     [Space]
     [Header("Enemy Attributes")]
-    [SerializeField] float hp;
-    [SerializeField] float speed;
-    [SerializeField] Vector3 scale;
+    [SerializeField] int hp = 99;
+    [SerializeField] float speed = 5;
+    [SerializeField] Vector3 scale = new Vector3(5f, 5f, 5f);
+
+    void Awake() => SetGiantAttributes();
 
     void OnTriggerEnter(Collider other)
     {
@@ -18,10 +21,16 @@ public class EnemyRelease : MonoBehaviour
             Invoke("SpawnEnemy", spawnDelay);
     }
 
-    void SpawnEnemy()
+    void SetGiantAttributes()
     {
-        enemyPrefab.MoveSpeed = speed;
-        enemyPrefab.transform.localScale = scale;
-        Instantiate(enemyPrefab, spawnPoint.transform.position, Quaternion.identity);
+        if (enemyPrefab != null)
+        {
+            EnemyChallenge enemyChallenge = enemyPrefab.GetComponent<EnemyChallenge>();
+            if (enemyChallenge != null) enemyChallenge.HP = hp;
+            enemyPrefab.MoveSpeed = speed;
+            enemyPrefab.transform.localScale = scale;
+        }
     }
+
+    void SpawnEnemy() => Instantiate(enemyPrefab, spawnPoint.transform.position, Quaternion.identity);
 }

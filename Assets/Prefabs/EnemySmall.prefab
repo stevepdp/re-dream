@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8563821650095105802}
   - component: {fileID: 8563821650095105800}
   - component: {fileID: -7302685168574045285}
+  - component: {fileID: 4433888660900544234}
   m_Layer: 0
   m_Name: EnemySmall
   m_TagString: Enemy
@@ -153,11 +154,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasChased: 0
   isChasing: 0
-  isIdle: 0
   aggroDistance: 7
   giveUpDistance: 14
   hp: 1
   moveSpeed: 6.25
   agent: {fileID: 0}
-  player: {fileID: 0}
   basePos: {x: 0, y: 0, z: 0}
+--- !u!114 &4433888660900544234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8563821650095105793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7841d89b8865b14cad4fb5113cb4b56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

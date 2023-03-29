@@ -1,10 +1,7 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
-public class EnemyChallenge : Enemy
+public class EnemyChallenge : EnemyHP
 {
     public static event Action OnChallengeEnemyDefeated;
 
@@ -12,12 +9,13 @@ public class EnemyChallenge : Enemy
 
     void OnDisable() => Challenge.OnChallengeEnemyAutokill -= AutoKill;
 
+    void AutoKill() => Destroy(gameObject);
+
     public override void DeductHP()
     {
         HP--;
-        if (HP <= 0) Destroy(gameObject);
+        if (HP <= 0)
+            Destroy(gameObject);
         OnChallengeEnemyDefeated?.Invoke();
     }
-
-    void AutoKill() => Destroy(gameObject);
 }
