@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,16 +19,16 @@ public class TutorialEvent : MonoBehaviour
     {
         JournalViewer.OnJournalOpened += HideTutorial;
         PauseMenu.OnPlayerPaused += HideTutorial;
-        Player.OnPlayerIdle += SetIdleTutorial;
-        Player.OnPlayerInput += HideTutorial;
+        PlayerIdle.OnPlayerIdle += SetIdleTutorial;
+        PlayerIdle.OnPlayerInput += HideTutorial;
     }
 
     void OnDisable()
     {
         JournalViewer.OnJournalOpened -= HideTutorial;
         PauseMenu.OnPlayerPaused -= HideTutorial;
-        Player.OnPlayerIdle -= SetIdleTutorial;
-        Player.OnPlayerInput -= HideTutorial;
+        PlayerIdle.OnPlayerIdle -= SetIdleTutorial;
+        PlayerIdle.OnPlayerInput -= HideTutorial;
     }
 
     void HideTutorial()

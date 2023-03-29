@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -13,8 +10,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int hp = 1;
     [SerializeField] private float moveSpeed;
     [SerializeField] private NavMeshAgent agent;
-    [SerializeField] private Transform player;
+    PlayerIdle player;
     [SerializeField] private Vector3 basePos;
+    private Color startingColour;
+    private Renderer rend;
 
     public float MoveSpeed
     {
@@ -28,8 +27,19 @@ public class Enemy : MonoBehaviour
         set { hp = value; }
     }
 
-    private Color startingColour;
-    private Renderer rend;
+    void Awake()
+    {
+        player = FindObjectOfType<PlayerIdle>();
+
+        rend = GetComponent<Renderer>();
+
+        SetupEnemy();
+    }
+
+    void Update()
+    {
+        ChasePlayer();
+    }
 
     void OnEnable()
     {
@@ -39,19 +49,6 @@ public class Enemy : MonoBehaviour
     void OnDisable()
     {
         GameManager.OnRoomRequirementsMet -= AutoKill;
-    }
-
-    void Awake()
-    {
-        rend = GetComponent<Renderer>();
-
-        SetupEnemy();
-        GetPlayerTransform();
-    }
-
-    void Update()
-    {
-        ChasePlayer();
     }
 
     void OnParticleCollision(GameObject other)
@@ -103,8 +100,6 @@ public class Enemy : MonoBehaviour
         hp--;
         if (hp <= 0) Destroy(gameObject);
     }
-
-    void GetPlayerTransform() => player = GameObject.FindObjectOfType<Player>().GetComponent<Transform>();
 
     void SetupEnemy()
     {

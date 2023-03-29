@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : StarterAssets.ThirdPersonController
 {
-    [SerializeField] float startingMoveSpeed;
-    [SerializeField] float startingSprintSpeed;
-    [SerializeField] float speedReduction;
+    [SerializeField] float startingMoveSpeed = 0;
+    [SerializeField] float startingSprintSpeed = 0;
+    [SerializeField] float speedReduction = 1.5f;
     [SerializeField] bool canJump;
 
     void OnEnable()

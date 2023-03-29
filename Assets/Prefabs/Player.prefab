@@ -1934,6 +1934,9 @@ GameObject:
   - component: {fileID: 6704594209145480870}
   - component: {fileID: 7952871437960440172}
   - component: {fileID: 7952871437902514268}
+  - component: {fileID: 425634867996700501}
+  - component: {fileID: 3185870707630266524}
+  - component: {fileID: 2245830467413155649}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -2159,43 +2162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d592f37f5aeb4d4eab9404edb092cf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canFire: 1
-  playerHasMoved: 0
-  playerIdleHintShown: 0
-  fireBurnedOut: 0
-  fireCooldownMin: 0
-  fireCooldownStep: 1
-  fireCooldownMax: 5
-  fireCooldownTime: 0
-  hp: 3
-  fire:
-    m_Name: Fire
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 45d115f3-74ca-4fc7-af82-f233643a5903
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  movement:
-    m_Name: Movement
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 2fccbad8-9faa-4243-bc8b-d6921f182ead
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  toggleHUD:
-    m_Name: Toggle HUD
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: d859191e-adde-412e-a56a-4b2af060f6c3
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  particleProjectile: {fileID: 0}
+  idleCheckTime: 6
 --- !u!114 &7952871437902514268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2244,6 +2211,44 @@ MonoBehaviour:
   startingSprintSpeed: 0
   speedReduction: 1.5
   canJump: 1
+--- !u!114 &425634867996700501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6704594209145480874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd8f81bf6d946d34f9c4a3a5a1d3e6a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 3
+--- !u!114 &3185870707630266524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6704594209145480874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17c2fc7e729d63844935a14b1429edc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2245830467413155649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6704594209145480874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 879ca9e05c71adc44a992cfef2360184, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleProjectile: {fileID: 0}
 --- !u!1 &6810279904575836918
 GameObject:
   m_ObjectHideFlags: 0

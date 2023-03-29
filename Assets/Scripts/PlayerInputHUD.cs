@@ -13,7 +13,6 @@ public class PlayerInputHUD : MonoBehaviour
     {
         playerControls = new PlayerControls();
         toggleHUD = playerControls.Player.ToggleHUD;
-        toggleHUD?.Enable();
     }
 
     void OnEnable() => toggleHUD.performed += ToggleHUD;

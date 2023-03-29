@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
     {
         Crystal.OnCrystalCollected += IncrementPlayerCrystalCount;
         Exit.OnPlayerEnteredExit += TestRoomRequirementsMet;
-        Player.OnPlayerDead += LevelReset;
+        PlayerHealth.OnPlayerDead += LevelReset;
         PuzzlePiece.OnPuzzlePieceCollected += IncrementPuzzlePiece;
         PuzzlePieceForChallenges.OnPuzzlePieceCollected += IncrementPuzzlePiece;
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
     {
         Crystal.OnCrystalCollected -= IncrementPlayerCrystalCount;
         Exit.OnPlayerEnteredExit -= TestRoomRequirementsMet;
-        Player.OnPlayerDead -= LevelReset;
+        PlayerHealth.OnPlayerDead -= LevelReset;
         PuzzlePiece.OnPuzzlePieceCollected -= IncrementPuzzlePiece;
         PuzzlePieceForChallenges.OnPuzzlePieceCollected -= IncrementPuzzlePiece;
         SceneManager.sceneLoaded -= OnSceneLoaded;

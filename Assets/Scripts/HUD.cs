@@ -1,15 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEngine.Rendering.DebugUI;
 
 public class HUD : MonoBehaviour
 {
     [SerializeField] Camera canvasCam;
-    [SerializeField] Player player;
+    PlayerIdle player;
+    [SerializeField] PlayerProjectile playerProjectile;
     [SerializeField] TMP_Text hudCrystalCountText;
     [SerializeField] TMP_Text hudPuzzlePieceCountText;
     [SerializeField] MeshRenderer hudJournalNotifierMesh;
@@ -19,14 +16,20 @@ public class HUD : MonoBehaviour
     [SerializeField] Color hudBurnoutColourLocked;
     [SerializeField] Color hudBurnoutColourNormal;
 
+    void Awake()
+    {
+        player = FindObjectOfType<PlayerIdle>();
+        playerProjectile = FindObjectOfType<PlayerProjectile>();
+    }
+
     void Start()
     {
         SetCrystalCountText();
         SetPuzzlePieceCountText();
 
         hudBurnoutFillImage = hudBurnoutSlider.fillRect.GetComponent<Image>();
-        hudBurnoutSlider.minValue = (float) player?.FireCooldownMin;
-        hudBurnoutSlider.maxValue = (float) player?.FireCooldownMax;
+        hudBurnoutSlider.minValue = (float) playerProjectile?.FireCooldownMin;
+        hudBurnoutSlider.maxValue = (float) playerProjectile?.FireCooldownMax;
     }
 
     void Update()
@@ -43,8 +46,8 @@ public class HUD : MonoBehaviour
         GameManager.OnRoomPuzzlePiecesCounted += SetPuzzlePieceCountText;
         GameManager.OnPlayerPuzzlePiecesCountUpdated += SetPuzzlePieceCountText;
         JournalViewer.OnJournalOpened += HideJournalNotification;
-        Player.OnPlayerProjectileBurnout += SetProjectileBurnedOut;
-        Player.OnPlayerProjectileReady += SetProjectileReady;
+        PlayerProjectile.OnPlayerProjectileBurnout += SetProjectileBurnedOut;
+        PlayerProjectile.OnPlayerProjectileReady += SetProjectileReady;
         PlayerInputHUD.OnPlayerToggleHUD += ToggleHUD;
         PuzzlePiece.OnPuzzlePieceCollected += ShowJournalNotification;
         PuzzlePieceForChallenges.OnPuzzlePieceCollected += ShowJournalNotification;
@@ -59,8 +62,8 @@ public class HUD : MonoBehaviour
         GameManager.OnRoomPuzzlePiecesCounted -= SetPuzzlePieceCountText;
         GameManager.OnPlayerPuzzlePiecesCountUpdated -= SetPuzzlePieceCountText;
         JournalViewer.OnJournalOpened -= HideJournalNotification;
-        Player.OnPlayerProjectileBurnout -= SetProjectileBurnedOut;
-        Player.OnPlayerProjectileReady -= SetProjectileReady;
+        PlayerProjectile.OnPlayerProjectileBurnout -= SetProjectileBurnedOut;
+        PlayerProjectile.OnPlayerProjectileReady -= SetProjectileReady;
         PlayerInputHUD.OnPlayerToggleHUD -= ToggleHUD;
         PuzzlePiece.OnPuzzlePieceCollected -= ShowJournalNotification;
         PuzzlePieceForChallenges.OnPuzzlePieceCollected -= ShowJournalNotification;
@@ -87,7 +90,7 @@ public class HUD : MonoBehaviour
     {
         hudProjectileStatusText.text = "";
         SetProjectileText();
-        if ((float) player?.FireCooldownTime == 0)
+        if ((float) playerProjectile?.FireCooldownTime == 0)
             hudBurnoutFillImage.enabled = false;
     }
 
@@ -95,7 +98,7 @@ public class HUD : MonoBehaviour
     {
         if (player != null)
         {
-            float cooldownTime = (float) player.FireCooldownTime;
+            float cooldownTime = (float) playerProjectile?.FireCooldownTime;
             hudBurnoutFillImage.enabled = true;
             hudBurnoutSlider.value = cooldownTime;
             if (cooldownTime == 0) hudBurnoutFillImage.enabled = false;

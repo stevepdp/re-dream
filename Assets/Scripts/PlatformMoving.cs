@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlatformMoving : MonoBehaviour
 {
-    [SerializeField] Player player;
+    PlayerIdle player;
     [SerializeField] Transform destination;
     float destinationThreshold = 0.1f;
     bool canMove = true;
@@ -16,6 +16,7 @@ public class PlatformMoving : MonoBehaviour
     void Awake()
     {
         originPos = transform.position;
+        player = FindObjectOfType<PlayerIdle>();
     }
 
     void FixedUpdate()
