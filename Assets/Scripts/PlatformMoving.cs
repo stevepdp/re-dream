@@ -2,16 +2,16 @@ using System.Collections;
 using UnityEngine;
 
 public class PlatformMoving : MonoBehaviour
-{
-    PlayerIdle player;
+{   
     [SerializeField] Transform destination;
+    [SerializeField] float moveSpeed = 2.5f;
+    [SerializeField] float pauseSeconds = 3f;
+
+    PlayerIdle player;
+    Vector3 originPos;
     float destinationThreshold = 0.1f;
     bool canMove = true;
-    [SerializeField] float moveSpeed;
-    [SerializeField] float pauseSeconds;
     bool toDestination = true;
-
-    Vector3 originPos;
 
     void Awake()
     {

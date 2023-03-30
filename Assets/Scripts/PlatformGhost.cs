@@ -1,11 +1,11 @@
 using System.Collections;
 using UnityEngine;
 
-public class Ghost : MonoBehaviour
+public class PlatformGhost : MonoBehaviour
 {
-    [SerializeField] float warnTimeout;
-    [SerializeField] float hideTimeout;
-    [SerializeField] float showTimeout;
+    [SerializeField] float warnTimeout = .5f;
+    [SerializeField] float hideTimeout = 2f;
+    [SerializeField] float showTimeout = 3f;
 
     Color platformColourDefault;
     MeshCollider meshCollider;
@@ -35,7 +35,7 @@ public class Ghost : MonoBehaviour
     {
         yield return new WaitForSeconds(showTimeout);
 
-        if (meshRenderer != null) meshRenderer.material.color = platformColourDefault;
+        if (meshRenderer != null && platformColourDefault != null) meshRenderer.material.color = platformColourDefault;
         if (meshCollider != null) meshCollider.enabled = true;
         if (rend != null) rend.enabled = true;
     }
@@ -52,8 +52,6 @@ public class Ghost : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
-        {
             StartCoroutine(Warn());
-        }
     }
 }

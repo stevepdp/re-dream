@@ -4,8 +4,6 @@ using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
 {
-    [SerializeField] Camera canvasCam;
-    PlayerIdle player;
     [SerializeField] PlayerProjectile playerProjectile;
     [SerializeField] TMP_Text hudCrystalCountText;
     [SerializeField] TMP_Text hudPuzzlePieceCountText;
@@ -15,6 +13,7 @@ public class HUD : MonoBehaviour
     [SerializeField] Image hudBurnoutFillImage;
     [SerializeField] Color hudBurnoutColourLocked;
     [SerializeField] Color hudBurnoutColourNormal;
+    PlayerIdle player;
 
     void Awake()
     {
@@ -48,7 +47,6 @@ public class HUD : MonoBehaviour
         JournalViewer.OnJournalOpened += HideJournalNotification;
         PlayerProjectile.OnPlayerProjectileBurnout += SetProjectileBurnedOut;
         PlayerProjectile.OnPlayerProjectileReady += SetProjectileReady;
-        PlayerInputHUD.OnPlayerToggleHUD += ToggleHUD;
         PuzzlePiece.OnPuzzlePieceCollected += ShowJournalNotification;
         PuzzlePieceForChallenges.OnPuzzlePieceCollected += ShowJournalNotification;
     }
@@ -64,7 +62,6 @@ public class HUD : MonoBehaviour
         JournalViewer.OnJournalOpened -= HideJournalNotification;
         PlayerProjectile.OnPlayerProjectileBurnout -= SetProjectileBurnedOut;
         PlayerProjectile.OnPlayerProjectileReady -= SetProjectileReady;
-        PlayerInputHUD.OnPlayerToggleHUD -= ToggleHUD;
         PuzzlePiece.OnPuzzlePieceCollected -= ShowJournalNotification;
         PuzzlePieceForChallenges.OnPuzzlePieceCollected -= ShowJournalNotification;
     }
@@ -115,11 +112,5 @@ public class HUD : MonoBehaviour
     {
         if (hudJournalNotifierMesh != null)
             hudJournalNotifierMesh.enabled = true;
-    }
-
-    void ToggleHUD()
-    {
-        if (canvasCam != null)
-            canvasCam.enabled = !canvasCam.enabled;
     }
 }

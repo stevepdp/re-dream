@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -35,11 +33,13 @@ public class ExitText : MonoBehaviour
 
     void SetExitRequirementsText()
     {
-        if (GameManager.instance != null)
-        {
+        if (GameManager.instance != null && roomRequirementsText != null)
             roomRequirementsText.text = "Puzzle Pieces Remaining: " + Mathf.Abs(GameManager.instance.PlayerPuzzlePiecesCount - GameManager.instance.RoomPuzzlePiecesTotal);
-        }
     }
 
-    void SetRoomCompletionText() => roomRequirementsText.text = "Dream Solved!";
+    void SetRoomCompletionText()
+    {
+        if (roomRequirementsText != null)
+            roomRequirementsText.text = "Dream Solved!";
+    }
 }
