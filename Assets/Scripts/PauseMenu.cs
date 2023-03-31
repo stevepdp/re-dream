@@ -18,8 +18,10 @@ public class PauseMenu : MonoBehaviour
         playerControls = new PlayerControls();
     }
 
+#if !UNITY_EDITOR
     void OnEnable()
     {
+
         GameManager.OnGameLostFocus += ShowPanelLostFocus;
         GameManager.OnGameRefocused += ShowCursor;
 
@@ -35,6 +37,7 @@ public class PauseMenu : MonoBehaviour
 
         pause.Disable();
     }
+#endif
 
     public void ClosePanel()
     {
@@ -77,7 +80,6 @@ public class PauseMenu : MonoBehaviour
             // in gameplay, so lock cursor center and hide it
             GameManager.instance?.HideCursorLocked();
         }
-            
     }
 
     void ShowPanel(InputAction.CallbackContext context)
