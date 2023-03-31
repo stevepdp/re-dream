@@ -15,26 +15,26 @@ public class PlayerProjectile : MonoBehaviour
     bool canFire;
     bool fireBurnedOut;
     int fireCooldownStep = 1;
-    int fireCooldownMin = 0;
-    int fireCooldownMax = 5;
-    int fireCooldownTime;
+    float fireCooldownMin = 0;
+    float fireCooldownMax = 5;
+    float fireCooldownTime = 0;
 
     public bool FireBurnedOut
     {
         get { return fireBurnedOut; }
     }
 
-    public int FireCooldownMin
+    public float FireCooldownMin
     {
         get { return fireCooldownMin; }
     }
 
-    public int FireCooldownMax
+    public float FireCooldownMax
     {
         get { return fireCooldownMax; }
     }
 
-    public int FireCooldownTime
+    public float FireCooldownTime
     {
         get { return fireCooldownTime; }
         set { fireCooldownTime = value; }
