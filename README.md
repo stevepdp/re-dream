@@ -1,5 +1,7 @@
 # Re:Dream
 
+[![Play Re:Dream on Itch.io](./re-dream.gif)](https://stevepdp.itch.io/re-dream)
+
 A 3D platforming game with procedural generation elements.
 
 
