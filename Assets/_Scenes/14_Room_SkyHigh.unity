@@ -2414,6 +2414,7 @@ MonoBehaviour:
     RefIds:
     - rid: 6771968354741125129
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
+      data: 
 --- !u!114 &273627368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8518,7 +8519,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 3, z: -3}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12028,6 +12029,7 @@ MonoBehaviour:
     RefIds:
     - rid: 6771968354741125129
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
+      data: 
 --- !u!114 &969196929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22127,6 +22129,7 @@ MonoBehaviour:
     RefIds:
     - rid: 6771968354741125129
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
+      data: 
 --- !u!114 &1777913140
 MonoBehaviour:
   m_ObjectHideFlags: 0
